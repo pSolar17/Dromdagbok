@@ -1,0 +1,114 @@
+[gd_scene load_steps=17 format=3 uid="uid://cq5rs5r745s7m"]
+
+[ext_resource type="Script" uid="uid://c4hvya65yu6qq" path="res://Scripts/Worlds/ShieldFolk World/ShieldFolk.gd" id="1_k1n8k"]
+[ext_resource type="Texture2D" uid="uid://cs6eexbuk73tb" path="res://Assets/Sprites/ShieldFolk World/shieldfolk.png" id="2_lmh4b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kjrqf"]
+atlas = ExtResource("2_lmh4b")
+region = Rect2(0, 0, 35, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwh53"]
+atlas = ExtResource("2_lmh4b")
+region = Rect2(35, 0, 35, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3v7h"]
+atlas = ExtResource("2_lmh4b")
+region = Rect2(70, 0, 35, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m382y"]
+atlas = ExtResource("2_lmh4b")
+region = Rect2(144, 0, 38, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s13n0"]
+atlas = ExtResource("2_lmh4b")
+region = Rect2(106, 0, 38, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihp51"]
+atlas = ExtResource("2_lmh4b")
+region = Rect2(182, 0, 37, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcsmt"]
+atlas = ExtResource("2_lmh4b")
+region = Rect2(219, 0, 37, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7o5gv"]
+atlas = ExtResource("2_lmh4b")
+region = Rect2(256, 0, 38, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4l0hj"]
+atlas = ExtResource("2_lmh4b")
+region = Rect2(294, 0, 37, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1mg1"]
+atlas = ExtResource("2_lmh4b")
+region = Rect2(331, 0, 37, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1blp5"]
+atlas = ExtResource("2_lmh4b")
+region = Rect2(368, 0, 36, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbqkg"]
+atlas = ExtResource("2_lmh4b")
+region = Rect2(404, 0, 36, 46)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g3kjd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjrqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwh53")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h3v7h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m382y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s13n0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihp51")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcsmt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7o5gv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4l0hj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1mg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1blp5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbqkg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tdouv"]
+size = Vector2(64, 32)
+
+[node name="ShieldFolk" type="Node2D"]
+script = ExtResource("1_k1n8k")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -46)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_g3kjd")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_tdouv")

@@ -1,0 +1,80 @@
+[gd_scene load_steps=12 format=3 uid="uid://oygd341tbiae"]
+
+[ext_resource type="Script" uid="uid://cyofyjqq4eo28" path="res://Scripts/Objects/Door.gd" id="1_fsynv"]
+[ext_resource type="Texture2D" uid="uid://c8pg66o8y0322" path="res://Assets/Sprites/Lidl Worlds/CellDoor.png" id="2_tiyqh"]
+[ext_resource type="Script" uid="uid://dtlu3shtwlu76" path="res://Scripts/Classes/InteractObject.gd" id="3_b4ycl"]
+[ext_resource type="AudioStream" uid="uid://bulrvts6fyl4l" path="res://Assets/Audio/Nexus World/yume_nexusdoor.mp3" id="4_okxru"]
+[ext_resource type="AudioStream" uid="uid://be4vbybtvykjc" path="res://Assets/Audio/000000000505.WAV" id="5_ssv8c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aokkl"]
+atlas = ExtResource("2_tiyqh")
+region = Rect2(0, 0, 34, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojyl2"]
+atlas = ExtResource("2_tiyqh")
+region = Rect2(48, 0, 34, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2icxq"]
+atlas = ExtResource("2_tiyqh")
+region = Rect2(96, 0, 34, 58)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kmi86"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aokkl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojyl2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2icxq")
+}],
+"loop": false,
+"name": &"open",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_smwo7"]
+size = Vector2(16, 6.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8oxef"]
+size = Vector2(32, 8)
+
+[node name="DoorEnd" type="Node2D"]
+process_mode = 3
+position = Vector2(832, 381)
+script = ExtResource("1_fsynv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -15)
+sprite_frames = SubResource("SpriteFrames_kmi86")
+animation = &"open"
+
+[node name="InteractObject" type="StaticBody2D" parent="."]
+position = Vector2(0, -5)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("3_b4ycl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractObject"]
+position = Vector2(0, 10)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_smwo7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 3)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_8oxef")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_okxru")
+
+[node name="OpenSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ssv8c")
+volume_db = -5.0
+
+[connection signal="interacted_with" from="InteractObject" to="." method="_on_interact_object_interacted_with"]

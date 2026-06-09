@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=4 uid="uid://dkql0y8553ydb"]
+
+[ext_resource type="Script" uid="uid://bko6okbv763m3" path="res://Scripts/Classes/Level.gd" id="1_mctkt"]
+[ext_resource type="AudioStream" uid="uid://hjwynka87o7b" path="res://Assets/Audio/Trollface World/trololo.mp3" id="2_s3cv4"]
+[ext_resource type="Texture2D" uid="uid://db6hcqrv0ub33" path="res://Assets/Sprites/Trollface World/Trollface.png" id="2_xv1al"]
+[ext_resource type="PackedScene" uid="uid://m76eqllwbtj0" path="res://Scenes/Objects/Character.tscn" id="4_dcfhv"]
+[ext_resource type="TileSet" uid="uid://cb1svb4pmllny" path="res://Assets/Resources/TileSets/Tiles32.tres" id="4_wqgb5"]
+[ext_resource type="Script" uid="uid://6dov7vgpvv5t" path="res://Scripts/Classes/NPC.gd" id="6_eqtg5"]
+[ext_resource type="Texture2D" uid="uid://dbh6rj10vntyd" path="res://Assets/Sprites/Trollface World/tf.png" id="7_34y3y"]
+[ext_resource type="Script" uid="uid://tjak3wi4osak" path="res://Scripts/Classes/AIs/WalkerAI.gd" id="7_grku7"]
+
+[sub_resource type="Resource" id="Resource_a0brw"]
+script = ExtResource("7_grku7")
+speed = 64.0
+
+[node name="WorldTrollface" type="Node2D"]
+script = ExtResource("1_mctkt")
+world_size = Vector2(960, 960)
+level_track = ExtResource("2_s3cv4")
+volume_db = -5.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0, 0)
+repeat_size = Vector2(960, 720)
+autoscroll = Vector2(8, 8)
+repeat_times = 2
+
+[node name="Trollface" type="Sprite2D" parent="Parallax2D"]
+self_modulate = Color(1, 1, 1, 0.0156863)
+position = Vector2(96, 64)
+scale = Vector2(2, 2)
+texture = ExtResource("2_xv1al")
+centered = false
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAANAA0AAQAEAAEAAAAOAA0AAQAEAAEAAAAPAA0AAQAEAAEAAAAQAA0AAQAEAAEAAAAQAA4AAQAEAAEAAAAQAA8AAQAEAAEAAAAQABAAAQAEAAEAAAAPABAAAQAEAAEAAAAOABAAAQAEAAEAAAANABAAAQAEAAEAAAANAA8AAQAEAAEAAAANAA4AAQAEAAEAAAA=")
+tile_set = ExtResource("4_wqgb5")
+
+[node name="Character" parent="." instance=ExtResource("4_dcfhv")]
+position = Vector2(480, 480)
+
+[node name="Trollface" type="Node2D" parent="."]
+position = Vector2(480, 672)
+script = ExtResource("6_eqtg5")
+flip = true
+ai = SubResource("Resource_a0brw")
+
+[node name="Tf" type="Sprite2D" parent="Trollface"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("7_34y3y")

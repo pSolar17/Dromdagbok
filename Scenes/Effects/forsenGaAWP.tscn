@@ -1,0 +1,133 @@
+[gd_scene load_steps=18 format=3 uid="uid://dxwnyh0hiikru"]
+
+[ext_resource type="Script" uid="uid://b2jh0iiamjxk0" path="res://Scripts/Effects/effect_forsengaawp.gd" id="1_v0eih"]
+[ext_resource type="Texture2D" uid="uid://bcyv3bay3oe3r" path="res://Assets/Sprites/Effects/forsenGaAWP.png" id="2_vm565"]
+[ext_resource type="AudioStream" uid="uid://ceygc8ogamtou" path="res://Assets/Audio/Effects/AWP.wav" id="3_w0dhr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1oa1"]
+atlas = ExtResource("2_vm565")
+region = Rect2(0, 0, 336, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lchh"]
+atlas = ExtResource("2_vm565")
+region = Rect2(336, 0, 336, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbxro"]
+atlas = ExtResource("2_vm565")
+region = Rect2(672, 0, 336, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgb8b"]
+atlas = ExtResource("2_vm565")
+region = Rect2(1008, 0, 336, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vraur"]
+atlas = ExtResource("2_vm565")
+region = Rect2(0, 112, 336, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mniib"]
+atlas = ExtResource("2_vm565")
+region = Rect2(336, 112, 336, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4i0hm"]
+atlas = ExtResource("2_vm565")
+region = Rect2(672, 112, 336, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2u02w"]
+atlas = ExtResource("2_vm565")
+region = Rect2(1008, 112, 336, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nncl7"]
+atlas = ExtResource("2_vm565")
+region = Rect2(0, 224, 336, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lssn"]
+atlas = ExtResource("2_vm565")
+region = Rect2(336, 224, 336, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_we00x"]
+atlas = ExtResource("2_vm565")
+region = Rect2(672, 224, 336, 112)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7i6s8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1oa1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lchh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbxro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgb8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vraur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mniib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4i0hm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2u02w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nncl7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lssn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_we00x")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sf2k1"]
+size = Vector2(20, 5)
+
+[sub_resource type="Gradient" id="Gradient_b2b76"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 0, 0, 0.752941, 1, 0, 0, 0)
+
+[node name="forsenGaAWP" type="Node2D"]
+script = ExtResource("1_v0eih")
+id = "effect_forsengaawp"
+effect_name = "forsenGaAWP"
+effect_desc = "360 NO SCOPE 420 BLAZE IT"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(32, -2)
+scale = Vector2(0.33, 0.33)
+sprite_frames = SubResource("SpriteFrames_7i6s8")
+animation = &"shoot"
+frame = 10
+frame_progress = 1.0
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+position = Vector2(17, 3)
+shape = SubResource("RectangleShape2D_sf2k1")
+target_position = Vector2(160, 0)
+max_results = 4
+collision_mask = 70
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(17, 3)
+points = PackedVector2Array(0, 0, 160, 0)
+width = 1.0
+gradient = SubResource("Gradient_b2b76")
+
+[node name="ShotSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_w0dhr")
+volume_db = -10.0
+
+[node name="CooldownTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.6
+one_shot = true

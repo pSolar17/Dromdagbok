@@ -1,0 +1,379 @@
+[gd_scene load_steps=14 format=3 uid="uid://8gkuabcynp1j"]
+
+[ext_resource type="Theme" uid="uid://dblpk24glpxwp" path="res://Assets/Resources/Themes/Default.tres" id="1_fwr1t"]
+[ext_resource type="Script" path="res://Scripts/Objects/UI/PauseMenu.gd" id="1_ossh4"]
+[ext_resource type="AudioStream" uid="uid://xdosmq78ru8s" path="res://Assets/Audio/UI/open.WAV" id="5_l5cw2"]
+[ext_resource type="AudioStream" uid="uid://hjntcy4yrccp" path="res://Assets/Audio/UI/cancel.WAV" id="6_cjfda"]
+[ext_resource type="Texture2D" uid="uid://cbyh6ed0mrcfe" path="res://Assets/Sprites/PauseMenuEffects.png" id="6_j1cdx"]
+[ext_resource type="AudioStream" uid="uid://d12h6dteldd46" path="res://Assets/Audio/UI/cursor.WAV" id="7_wdddt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvlor"]
+bg_color = Color(0, 0, 0, 1)
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6k7uo"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekqde"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_ec5gt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackScreen:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gbl8t"]
+resource_name = "fade_in"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackScreen:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_baig6"]
+resource_name = "fade_out"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackScreen:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cvsuw"]
+_data = {
+"RESET": SubResource("Animation_ec5gt"),
+"fade_in": SubResource("Animation_gbl8t"),
+"fade_out": SubResource("Animation_baig6")
+}
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+z_index = 5
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_fwr1t")
+script = ExtResource("1_ossh4")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+tabs_visible = false
+
+[node name="MainScreen" type="PanelContainer" parent="TabContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wvlor")
+metadata/_tab_index = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/MainScreen"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Controls" type="VBoxContainer" parent="TabContainer/MainScreen/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="TabContainer/MainScreen/HBoxContainer/Controls"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/MainScreen/HBoxContainer/Controls/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 11
+theme_override_constants/margin_bottom = 13
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/MainScreen/HBoxContainer/Controls/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="EffectButton" type="Button" parent="TabContainer/MainScreen/HBoxContainer/Controls/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+action_mode = 0
+text = "Effects"
+alignment = 0
+
+[node name="QuitButton" type="Button" parent="TabContainer/MainScreen/HBoxContainer/Controls/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+action_mode = 0
+text = "Quit Game"
+alignment = 0
+
+[node name="EmptySpaceLULE" type="Control" parent="TabContainer/MainScreen/HBoxContainer/Controls"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelContainer2" type="PanelContainer" parent="TabContainer/MainScreen/HBoxContainer/Controls"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/MainScreen/HBoxContainer/Controls/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 17
+
+[node name="Money" type="Label" parent="TabContainer/MainScreen/HBoxContainer/Controls/PanelContainer2/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "300 kr"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Info" type="PanelContainer" parent="TabContainer/MainScreen/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.6
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/MainScreen/HBoxContainer/Info"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_bottom = 364
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/MainScreen/HBoxContainer/Info/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="PanelContainer" type="PanelContainer" parent="TabContainer/MainScreen/HBoxContainer/Info/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/MainScreen/HBoxContainer/Info/MarginContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="EffectSprite" type="Sprite2D" parent="TabContainer/MainScreen/HBoxContainer/Info/MarginContainer/HBoxContainer/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+position = Vector2(44, 44)
+scale = Vector2(0.33, 0.33)
+
+[node name="EffectAnimatedSprite" type="AnimatedSprite2D" parent="TabContainer/MainScreen/HBoxContainer/Info/MarginContainer/HBoxContainer/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+position = Vector2(44, 44)
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/MainScreen/HBoxContainer/Info/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.45
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 9
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/MainScreen/HBoxContainer/Info/MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="Name" type="Label" parent="TabContainer/MainScreen/HBoxContainer/Info/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "Forsen"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/MainScreen/HBoxContainer/Info/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EffectCount" type="Label" parent="TabContainer/MainScreen/HBoxContainer/Info/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "E 25"
+
+[node name="Health" type="Label" parent="TabContainer/MainScreen/HBoxContainer/Info/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 23
+text = "♥ 1/  1"
+horizontal_alignment = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/MainScreen/HBoxContainer/Info/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Experience" type="Label" parent="TabContainer/MainScreen/HBoxContainer/Info/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "   324/  350"
+
+[node name="Mana" type="Label" parent="TabContainer/MainScreen/HBoxContainer/Info/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 23
+text = "0/  0"
+horizontal_alignment = 2
+
+[node name="EffectScreen" type="PanelContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6k7uo")
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/EffectScreen"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="TabContainer/EffectScreen/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/EffectScreen/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 11
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 17
+
+[node name="EffectDescriptionLabel" type="RichTextLabel" parent="TabContainer/EffectScreen/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "Covers your screen in flashing lights.
+[color=red]PHOTOSENSITIVITY WARNING![/color] May cause seizures and brain rot."
+fit_content = true
+
+[node name="PanelContainer2" type="PanelContainer" parent="TabContainer/EffectScreen/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/EffectScreen/VBoxContainer/PanelContainer2"]
+layout_mode = 2
+
+[node name="EffectButtonContainer" type="GridContainer" parent="TabContainer/EffectScreen/VBoxContainer/PanelContainer2/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 2
+
+[node name="TutorialButton" type="Button" parent="TabContainer/EffectScreen/VBoxContainer/PanelContainer2/MarginContainer/EffectButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="QuitScreen" type="Panel" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ekqde")
+metadata/_tab_index = 2
+
+[node name="Panel" type="Panel" parent="TabContainer/QuitScreen"]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 144.0
+offset_right = 456.0
+offset_bottom = 208.0
+
+[node name="Label" type="Label" parent="TabContainer/QuitScreen/Panel"]
+layout_mode = 0
+offset_right = 272.0
+offset_bottom = 64.0
+theme_override_font_sizes/font_size = 16
+text = "Do you want to quit?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel2" type="Panel" parent="TabContainer/QuitScreen"]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 240.0
+offset_right = 352.0
+offset_bottom = 336.0
+
+[node name="QuitYesButton" type="Button" parent="TabContainer/QuitScreen/Panel2"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = 56.0
+offset_bottom = 48.0
+action_mode = 0
+text = "Yes"
+
+[node name="QuitNoButton" type="Button" parent="TabContainer/QuitScreen/Panel2"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 8.0
+offset_top = 48.0
+offset_right = 56.0
+offset_bottom = 80.0
+action_mode = 0
+text = "No"
+
+[node name="BlackScreen" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="OpenSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_l5cw2")
+volume_db = -5.0
+
+[node name="CancelSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_cjfda")
+volume_db = -5.0
+
+[node name="CursorSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_wdddt")
+volume_db = -5.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cvsuw")
+}
+
+[node name="PauseMenuEffects" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.501961)
+position = Vector2(320, 240)
+texture = ExtResource("6_j1cdx")
+
+[connection signal="focus_entered" from="TabContainer/MainScreen/HBoxContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/EffectButton" to="." method="_on_button_focus_entered"]
+[connection signal="focus_entered" from="TabContainer/MainScreen/HBoxContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_button_focus_entered"]
+[connection signal="pressed" from="TabContainer/MainScreen/HBoxContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="focus_entered" from="TabContainer/QuitScreen/Panel2/QuitYesButton" to="." method="_on_button_focus_entered"]
+[connection signal="pressed" from="TabContainer/QuitScreen/Panel2/QuitYesButton" to="." method="_on_quit_yes_button_pressed"]
+[connection signal="focus_entered" from="TabContainer/QuitScreen/Panel2/QuitNoButton" to="." method="_on_button_focus_entered"]
+[connection signal="pressed" from="TabContainer/QuitScreen/Panel2/QuitNoButton" to="." method="_on_quit_no_button_pressed"]

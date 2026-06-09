@@ -1,0 +1,14 @@
+Music
+
+63 - pokemon cry
+125 - horse monkaE
+158
+231 - effect obtained
+232 - effect activated
+320 - hand effect
+438 - tile1
+440 - tile2
+
+Sounds:
+
+16 - Teleport

@@ -1,0 +1,89 @@
+[gd_scene load_steps=15 format=4 uid="uid://bdmy6a7nnhdnm"]
+
+[ext_resource type="Script" uid="uid://bko6okbv763m3" path="res://Scripts/Classes/Level.gd" id="1_sw1j7"]
+[ext_resource type="Texture2D" uid="uid://d22gtyvh4kc3m" path="res://Assets/Sprites/Lidl Worlds/dreamstart.png" id="2_bw8pj"]
+[ext_resource type="AudioStream" uid="uid://d1tcl8bm5345o" path="res://Assets/Audio/Lidl Worlds/dream_start.WAV" id="2_jo3r1"]
+[ext_resource type="PackedScene" uid="uid://m76eqllwbtj0" path="res://Scenes/Objects/Character.tscn" id="3_dyloy"]
+[ext_resource type="PackedScene" uid="uid://ixk0jsb0nvwh" path="res://Scenes/Objects/Other/TV.tscn" id="4_y4tcf"]
+[ext_resource type="Texture2D" uid="uid://6ubbluu766l2" path="res://Assets/Sprites/Lidl Worlds/snes.png" id="5_b1njo"]
+[ext_resource type="PackedScene" uid="uid://bie14sm4ow82h" path="res://Scenes/Objects/Common/LevelEntry.tscn" id="7_jfbvm"]
+[ext_resource type="TileSet" uid="uid://cggdnyn7esbos" path="res://Assets/Resources/TileSets/Tiles8.tres" id="8_0ylua"]
+[ext_resource type="PackedScene" uid="uid://d3vkxpqwlfu15" path="res://Scenes/Objects/Nexus World/DoorNexus.tscn" id="8_sl0i3"]
+[ext_resource type="Script" uid="uid://ded8bnk0e8dng" path="res://Scripts/Worlds/Lidl Worlds/Knocker.gd" id="9_amvve"]
+[ext_resource type="AudioStream" uid="uid://3sk4msc8g8kg" path="res://Assets/Audio/Lidl Worlds/tts_knock.mp3" id="9_etysj"]
+[ext_resource type="Texture2D" uid="uid://ydb4m50ux23j" path="res://Assets/Sprites/Lidl Worlds/beg_normal.png" id="11_t1j7b"]
+[ext_resource type="PackedScene" uid="uid://3dxca4iqedhd" path="res://Scenes/Objects/Other/SleeperObject.tscn" id="12_gn0wc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hkvxg"]
+size = Vector2(48, 32)
+
+[node name="WorldStartDream" type="Node2D" node_paths=PackedStringArray("player")]
+y_sort_enabled = true
+script = ExtResource("1_sw1j7")
+world_size = Vector2(2560, 2560)
+player = NodePath("Character")
+level_track = ExtResource("2_jo3r1")
+volume_db = -5.0
+limit_left = 0
+limit_top = 0
+limit_right = 640
+limit_bottom = 480
+
+[node name="Dreamstart" type="Sprite2D" parent="."]
+z_index = -20
+position = Vector2(320, 240)
+texture = ExtResource("2_bw8pj")
+
+[node name="Character" parent="." instance=ExtResource("3_dyloy")]
+position = Vector2(456, 232)
+
+[node name="InteractTV" parent="." instance=ExtResource("4_y4tcf")]
+position = Vector2(216, 200)
+
+[node name="Snes" type="StaticBody2D" parent="."]
+position = Vector2(200, 232)
+collision_layer = 4
+
+[node name="Snes" type="Sprite2D" parent="Snes"]
+position = Vector2(8, 5)
+texture = ExtResource("5_b1njo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Snes"]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_hkvxg")
+
+[node name="LevelEntryNexus" parent="." instance=ExtResource("7_jfbvm")]
+position = Vector2(248, 208)
+id = 1
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+visible = false
+tile_map_data = PackedByteArray("AAAhABcAAgAQAAQAAAAgABcAAgAQAAQAAAAiABcAAgAQAAQAAAAjABcAAgAQAAQAAAAkABcAAgAQAAQAAAAlABcAAgAQAAQAAAAlABgAAgAQAAQAAAAlABkAAgAQAAQAAAAmABkAAgAQAAQAAAAnABkAAgAQAAQAAAAoABkAAgAQAAQAAAApABkAAgAQAAQAAAAqABkAAgAQAAQAAAArABkAAgAQAAQAAAArABgAAgAQAAQAAAAsABkAAgAQAAQAAAAtABkAAgAQAAQAAAAuABkAAgAQAAQAAAAvABkAAgAQAAQAAAAwABkAAgAQAAQAAAAwABoAAgAQAAQAAAAxABoAAgAQAAQAAAAyABoAAgAQAAQAAAAzABoAAgAQAAQAAAAzABkAAgAQAAQAAAA0ABkAAgAQAAQAAAA1ABkAAgAQAAQAAAA2ABkAAgAQAAQAAAA8ACEAAgAQAAQAAAA8ACIAAgAQAAQAAAA8ACMAAgAQAAQAAAA8ACQAAgAQAAQAAAA8ACUAAgAQAAQAAAA8ACYAAgAQAAQAAAA8ACcAAgAQAAQAAAA8ACgAAgAQAAQAAAA8ACkAAgAQAAQAAAA8ACoAAgAQAAQAAAA8ADAAAgAQAAQAAAA8AC8AAgAQAAQAAAA8AC4AAgAQAAQAAAA8AC0AAgAQAAQAAAA8ACwAAgAQAAQAAAA8ACsAAgAQAAQAAAA7ADAAAgAQAAQAAAA6ADAAAgAQAAQAAAA5ADAAAgAQAAQAAAA4ADAAAgAQAAQAAAA3ADAAAgAQAAQAAAA2ADAAAgAQAAQAAAA1ADAAAgAQAAQAAAA0ADAAAgAQAAQAAAAzADAAAgAQAAQAAAAyADAAAgAQAAQAAAAxADAAAgAQAAQAAAAwADAAAgAQAAQAAAAvADAAAgAQAAQAAAAuADAAAgAQAAQAAAAtADAAAgAQAAQAAAAsADAAAgAQAAQAAAArADAAAgAQAAQAAAAqADAAAgAQAAQAAAApADAAAgAQAAQAAAAoADAAAgAQAAQAAAAnADAAAgAQAAQAAAAmADAAAgAQAAQAAAAlADAAAgAQAAQAAAAkADAAAgAQAAQAAAAjADAAAgAQAAQAAAAiADAAAgAQAAQAAAAhADAAAgAQAAQAAAAgADAAAgAQAAQAAAAfADAAAgAQAAQAAAAeADAAAgAQAAQAAAAdADAAAgAQAAQAAAAcADAAAgAQAAQAAAAbADAAAgAQAAQAAAAaADAAAgAQAAQAAAAZADAAAgAQAAQAAAAYADAAAgAQAAQAAAAXADAAAgAQAAQAAAAWADAAAgAQAAQAAAAVADAAAgAQAAQAAAAUADAAAgAQAAQAAAATADAAAgAQAAQAAAATAC8AAgAQAAQAAAATAC4AAgAQAAQAAAATAC0AAgAQAAQAAAATACwAAgAQAAQAAAATACsAAgAQAAQAAAATACoAAgAQAAQAAAATACkAAgAQAAQAAAATACgAAgAQAAQAAAATACcAAgAQAAQAAAATACYAAgAQAAQAAAATACUAAgAQAAQAAAATACQAAgAQAAQAAAATACMAAgAQAAQAAAATACIAAgAQAAQAAAATACEAAgAQAAQAAAATACAAAgAQAAQAAAATAB8AAgAQAAQAAAATAB4AAgAQAAQAAAATAB0AAgAQAAQAAAATABwAAgAQAAQAAAATABsAAgAQAAQAAAAUABsAAgAQAAQAAAAVABsAAgAQAAQAAAAWABsAAgAQAAQAAAAXABsAAgAQAAQAAAAXABoAAgAQAAQAAAAXABkAAgAQAAQAAAAXABgAAgAQAAQAAAAXABcAAgAQAAQAAAAYABcAAgAQAAQAAAAZABcAAgAQAAQAAAAaABcAAgAQAAQAAAAbABcAAgAQAAQAAAAbABYAAgAQAAQAAAAgABYAAgAQAAQAAAA3ABkAAgAQAAQAAAA4ABkAAgAQAAQAAAA5ABkAAgAQAAQAAAA6ABkAAgAQAAQAAAA7ABkAAgAQAAQAAAA8ABkAAgAQAAQAAAA8ABoAAgAQAAQAAAA8ABsAAgAQAAQAAAA8ABwAAgAQAAQAAAA8AB0AAgAQAAQAAAA8AB4AAgAQAAQAAAA8AB8AAgAQAAQAAAA8ACAAAgAQAAQAAAA1ACEAAgAQAAQAAAA2ACEAAgAQAAQAAAA3ACEAAgAQAAQAAAA4ACEAAgAQAAQAAAA5ACEAAgAQAAQAAAA6ACEAAgAQAAQAAAA7ACEAAgAQAAQAAAAfABYAAgAQAAQAAAAeABYAAgAQAAQAAAAdABYAAgAQAAQAAAAcABYAAgAQAAQAAAA7ABoAAgAQAAQAAAA7ABsAAgAQAAQAAAA7ABwAAgAQAAQAAAA7AB0AAgAQAAQAAAA7AB4AAgAQAAQAAAA7AB8AAgAQAAQAAAA7ACAAAgAQAAQAAAA7ACIAAgAQAAQAAAA6ACIAAgAQAAQAAAA5ACIAAgAQAAQAAAA4ACIAAgAQAAQAAAA3ACIAAgAQAAQAAAA2ACIAAgAQAAQAAAA1ACIAAgAQAAQAAAA=")
+tile_set = ExtResource("8_0ylua")
+collision_visibility_mode = 1
+
+[node name="DoorNexus" parent="." instance=ExtResource("8_sl0i3")]
+z_index = -1
+position = Vector2(241, 192)
+level_id = "world_nexus"
+
+[node name="Knocker" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(240, 168)
+stream = ExtResource("9_etysj")
+autoplay = true
+script = ExtResource("9_amvve")
+
+[node name="Timer" type="Timer" parent="Knocker"]
+wait_time = 5.5
+autostart = true
+
+[node name="BegNormal" type="Sprite2D" parent="."]
+position = Vector2(454, 278)
+texture = ExtResource("11_t1j7b")
+offset = Vector2(0, -25)
+
+[node name="SleeperObject" parent="." instance=ExtResource("12_gn0wc")]
+z_index = 1
+position = Vector2(472, 240)
+
+[connection signal="timeout" from="Knocker/Timer" to="Knocker" method="_on_timer_timeout"]

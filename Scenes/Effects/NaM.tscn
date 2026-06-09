@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://r5hyaxivhfl0"]
+
+[ext_resource type="Script" uid="uid://cpg80c3av4ry7" path="res://Scripts/Effects/effect_nam.gd" id="1_7gwae"]
+[ext_resource type="Texture2D" uid="uid://ogmky4s7jro7" path="res://Assets/Sprites/Effects/NaM.webp" id="2_hcicm"]
+
+[node name="NaM" type="Node2D"]
+script = ExtResource("1_7gwae")
+id = "effect_nam"
+effect_name = "NaM"
+effect_desc = "NaM THE WEEBS AWAY"
+
+[node name="NaM" type="Sprite2D" parent="."]
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("2_hcicm")

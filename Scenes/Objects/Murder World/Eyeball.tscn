@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cb6q35tdnjor6"]
+
+[ext_resource type="Script" uid="uid://ctto7wt1ra0yb" path="res://Scripts/Worlds/Murder World/Eyeball.gd" id="1_dokt0"]
+[ext_resource type="Texture2D" uid="uid://coy6youv3mwrv" path="res://Assets/Sprites/Murder World/EyeBase.png" id="2_yxvr5"]
+[ext_resource type="Texture2D" uid="uid://don8u03h77mja" path="res://Assets/Sprites/Murder World/EyePupil.png" id="3_e28ta"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_frwgg"]
+size = Vector2(24, 26)
+
+[node name="Eyeball" type="Node2D"]
+z_index = -1
+script = ExtResource("1_dokt0")
+
+[node name="EyeBase" type="Sprite2D" parent="."]
+texture = ExtResource("2_yxvr5")
+
+[node name="EyePupil" type="Sprite2D" parent="."]
+position = Vector2(-6, -4)
+texture = ExtResource("3_e28ta")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-3, 0)
+shape = SubResource("RectangleShape2D_frwgg")

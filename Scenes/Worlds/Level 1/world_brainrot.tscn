@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://jocwk10i33bp"]
+
+[ext_resource type="Script" uid="uid://bko6okbv763m3" path="res://Scripts/Classes/Level.gd" id="1_aexro"]
+[ext_resource type="Script" uid="uid://c8ks3iin0yeo3" path="res://Scripts/Worlds/Brainrot World/SanityMeter.gd" id="2_07m45"]
+[ext_resource type="PackedScene" uid="uid://m76eqllwbtj0" path="res://Scenes/Objects/Character.tscn" id="2_180kc"]
+[ext_resource type="AudioStream" uid="uid://bb8x3rvumebtx" path="res://Assets/Audio/mus_ruins.ogg" id="2_l50bt"]
+
+[sub_resource type="Gradient" id="Gradient_r8s5f"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5wvwc"]
+gradient = SubResource("Gradient_r8s5f")
+width = 240
+height = 32
+
+[sub_resource type="Gradient" id="Gradient_clgs0"]
+colors = PackedColorArray(0.752941, 0, 0, 1, 0, 0.752941, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wl6cm"]
+gradient = SubResource("Gradient_clgs0")
+width = 232
+height = 24
+
+[node name="WorldBrainrot" type="Node2D"]
+script = ExtResource("1_aexro")
+world_size = Vector2(3920, 3920)
+level_track = ExtResource("2_l50bt")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="SanityMeter" type="TextureProgressBar" parent="CanvasLayer"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 176.0
+offset_bottom = 48.0
+max_value = 60.0
+value = 60.0
+texture_under = SubResource("GradientTexture2D_5wvwc")
+texture_progress = SubResource("GradientTexture2D_wl6cm")
+texture_progress_offset = Vector2(4, 4)
+script = ExtResource("2_07m45")
+
+[node name="Character" parent="." instance=ExtResource("2_180kc")]
+position = Vector2(320, 240)

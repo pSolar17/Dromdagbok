@@ -1,0 +1,212 @@
+[gd_scene load_steps=18 format=3 uid="uid://2dwau0r2tkpn"]
+
+[ext_resource type="Script" uid="uid://bko6okbv763m3" path="res://Scripts/Classes/Level.gd" id="1_hqrvo"]
+[ext_resource type="AudioStream" uid="uid://d2krjx764j4nh" path="res://Assets/Audio/Puddle World/0000081.WAV" id="2_dswhd"]
+[ext_resource type="Texture2D" uid="uid://bok3ymw0t2g8h" path="res://Assets/Sprites/Puddle World/PuddleWorld.png" id="2_wkbya"]
+[ext_resource type="Texture2D" uid="uid://can6eq5bkgthf" path="res://Assets/Sprites/Puddle World/bg.png" id="3_kyvl8"]
+[ext_resource type="Script" uid="uid://cj28h3uggsdyk" path="res://Scripts/Classes/GameObject.gd" id="3_nbccd"]
+[ext_resource type="Texture2D" uid="uid://b46rrvuxw16oo" path="res://Assets/Sprites/Puddle World/lamp.png" id="4_qoi6v"]
+[ext_resource type="Texture2D" uid="uid://d012cojwydx2y" path="res://Assets/Sprites/Puddle World/umbrella.png" id="5_pwj63"]
+[ext_resource type="Script" uid="uid://dtlu3shtwlu76" path="res://Scripts/Classes/InteractObject.gd" id="6_dnbhl"]
+[ext_resource type="Script" uid="uid://ccec3yvg1iabo" path="res://Scripts/Classes/EffectObject.gd" id="7_y0sje"]
+[ext_resource type="Texture2D" uid="uid://3ovjkygr51vh" path="res://Assets/Sprites/Puddle World/stairway.png" id="8_wevdr"]
+[ext_resource type="PackedScene" uid="uid://m76eqllwbtj0" path="res://Scenes/Objects/Character.tscn" id="9_f6k6h"]
+[ext_resource type="Script" uid="uid://ecdxedwfuxmx" path="res://Scripts/Classes/LevelChanger.gd" id="11_05n34"]
+[ext_resource type="PackedScene" uid="uid://cb21kh26jov1p" path="res://Scenes/Objects/Puddle World/DoorPuddle.tscn" id="12_drq4m"]
+[ext_resource type="PackedScene" uid="uid://bie14sm4ow82h" path="res://Scenes/Objects/Common/LevelEntry.tscn" id="12_peowo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jegai"]
+size = Vector2(24, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ilfo2"]
+size = Vector2(48, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f2n3l"]
+size = Vector2(18, 56)
+
+[node name="WorldPuddle" type="Node2D" node_paths=PackedStringArray("player")]
+y_sort_enabled = true
+script = ExtResource("1_hqrvo")
+world_size = Vector2(3840, 3840)
+player = NodePath("Character")
+level_track = ExtResource("2_dswhd")
+volume_db = -5.0
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+z_index = -100
+repeat_size = Vector2(1280, 480)
+autoscroll = Vector2(8, 8)
+repeat_times = 3
+
+[node name="Bg" type="Sprite2D" parent="Parallax2D"]
+texture_filter = 1
+position = Vector2(640, 240)
+texture = ExtResource("3_kyvl8")
+
+[node name="Parallax2D2" type="Parallax2D" parent="."]
+repeat_size = Vector2(3840, 3840)
+repeat_times = 2
+
+[node name="PuddleWorld" type="Sprite2D" parent="Parallax2D2"]
+z_index = -99
+position = Vector2(1920, 1920)
+scale = Vector2(2, 2)
+texture = ExtResource("2_wkbya")
+
+[node name="Lamp" type="Node2D" parent="."]
+position = Vector2(304, 800)
+script = ExtResource("3_nbccd")
+
+[node name="Lamp2" type="Sprite2D" parent="Lamp"]
+position = Vector2(0, -48)
+scale = Vector2(2, 2)
+texture = ExtResource("4_qoi6v")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Lamp"]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lamp/StaticBody2D"]
+position = Vector2(-4, -8)
+shape = SubResource("RectangleShape2D_jegai")
+
+[node name="Lamp2" type="Node2D" parent="."]
+position = Vector2(304, 1600)
+script = ExtResource("3_nbccd")
+
+[node name="Lamp2" type="Sprite2D" parent="Lamp2"]
+position = Vector2(0, -48)
+scale = Vector2(2, 2)
+texture = ExtResource("4_qoi6v")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Lamp2"]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lamp2/StaticBody2D"]
+position = Vector2(-4, -8)
+shape = SubResource("RectangleShape2D_jegai")
+
+[node name="Lamp3" type="Node2D" parent="."]
+position = Vector2(1232, 1824)
+script = ExtResource("3_nbccd")
+
+[node name="Lamp2" type="Sprite2D" parent="Lamp3"]
+position = Vector2(0, -48)
+scale = Vector2(2, 2)
+texture = ExtResource("4_qoi6v")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Lamp3"]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lamp3/StaticBody2D"]
+position = Vector2(-4, -8)
+shape = SubResource("RectangleShape2D_jegai")
+
+[node name="Lamp4" type="Node2D" parent="."]
+position = Vector2(496, 2944)
+script = ExtResource("3_nbccd")
+
+[node name="Lamp2" type="Sprite2D" parent="Lamp4"]
+position = Vector2(0, -48)
+scale = Vector2(2, 2)
+texture = ExtResource("4_qoi6v")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Lamp4"]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lamp4/StaticBody2D"]
+position = Vector2(-4, -8)
+shape = SubResource("RectangleShape2D_jegai")
+
+[node name="Lamp5" type="Node2D" parent="."]
+position = Vector2(3056, 2592)
+script = ExtResource("3_nbccd")
+
+[node name="Lamp2" type="Sprite2D" parent="Lamp5"]
+position = Vector2(0, -48)
+scale = Vector2(2, 2)
+texture = ExtResource("4_qoi6v")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Lamp5"]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lamp5/StaticBody2D"]
+position = Vector2(-4, -8)
+shape = SubResource("RectangleShape2D_jegai")
+
+[node name="Lamp6" type="Node2D" parent="."]
+position = Vector2(2546, 1024)
+script = ExtResource("3_nbccd")
+
+[node name="Lamp2" type="Sprite2D" parent="Lamp6"]
+position = Vector2(0, -48)
+scale = Vector2(2, 2)
+texture = ExtResource("4_qoi6v")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Lamp6"]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lamp6/StaticBody2D"]
+position = Vector2(-4, -8)
+shape = SubResource("RectangleShape2D_jegai")
+
+[node name="Umbrella" type="Node2D" parent="."]
+position = Vector2(1432, 2624)
+script = ExtResource("3_nbccd")
+
+[node name="Umbrella2" type="Sprite2D" parent="Umbrella"]
+position = Vector2(-8, -12)
+scale = Vector2(2, 2)
+texture = ExtResource("5_pwj63")
+
+[node name="InteractObject" type="StaticBody2D" parent="Umbrella"]
+collision_layer = 4
+script = ExtResource("6_dnbhl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Umbrella/InteractObject"]
+position = Vector2(-8, -8)
+shape = SubResource("RectangleShape2D_ilfo2")
+
+[node name="EffectObject" type="Node2D" parent="Umbrella"]
+script = ExtResource("7_y0sje")
+effect_id = "effect_monkaomega"
+
+[node name="Stairway" type="Node2D" parent="."]
+position = Vector2(2400, 1676)
+script = ExtResource("3_nbccd")
+
+[node name="Stairway2" type="Sprite2D" parent="Stairway"]
+position = Vector2(-13, 5)
+scale = Vector2(2, 2)
+texture = ExtResource("8_wevdr")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Stairway"]
+position = Vector2(0, 52)
+collision_layer = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Stairway/StaticBody2D"]
+polygon = PackedVector2Array(-32, -8, -24, 0, 32, 0, 32, -48, -8, -88, -56, -88, -56, -32, -56, -80, -32, -56)
+
+[node name="Area2D" type="Area2D" parent="Stairway"]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairway/Area2D"]
+position = Vector2(-31, 8)
+shape = SubResource("RectangleShape2D_f2n3l")
+
+[node name="LevelChanger" type="Node" parent="Stairway"]
+script = ExtResource("11_05n34")
+world_id = "world_earthboundcave"
+
+[node name="LevelEntry" parent="Stairway" instance=ExtResource("12_peowo")]
+position = Vector2(-56, 36)
+id = 1
+
+[node name="Character" parent="." instance=ExtResource("9_f6k6h")]
+position = Vector2(368, 368)
+
+[node name="DoorPuddle" parent="." instance=ExtResource("12_drq4m")]
+position = Vector2(369, 353)
+level_entry = 4444
+
+[connection signal="interacted_with" from="Umbrella/InteractObject" to="Umbrella/EffectObject" method="unlock_effect" unbinds=1]
+[connection signal="body_entered" from="Stairway/Area2D" to="Stairway/LevelChanger" method="change_level" unbinds=1]

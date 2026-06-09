@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://mvfcp65sbinu"]
+
+[ext_resource type="Script" uid="uid://ccec3yvg1iabo" path="res://Scripts/Classes/EffectObject.gd" id="1_4pgs3"]
+[ext_resource type="Texture2D" uid="uid://dlsxcctijiadd" path="res://Assets/Sprites/Minecraft World/DragonEgg.png" id="2_ki5pi"]
+[ext_resource type="Script" uid="uid://dtlu3shtwlu76" path="res://Scripts/Classes/InteractObject.gd" id="3_pe0bs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2bpmp"]
+size = Vector2(64, 24)
+
+[node name="DragonEgg" type="Node2D"]
+script = ExtResource("1_4pgs3")
+effect_id = "effect_forsengapick"
+
+[node name="DragonEgg" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_ki5pi")
+
+[node name="InteractObject" type="StaticBody2D" parent="."]
+collision_layer = 12
+script = ExtResource("3_pe0bs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractObject"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_2bpmp")
+
+[connection signal="interacted_with" from="InteractObject" to="." method="unlock_effect" unbinds=1]

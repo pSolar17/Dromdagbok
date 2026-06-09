@@ -1,0 +1,104 @@
+[gd_scene load_steps=8 format=3 uid="uid://uruegfqpbbw3"]
+
+[ext_resource type="Script" uid="uid://dj5xvfm8ott1u" path="res://Scripts/Effects/effect_forsenswa.gd" id="1_t3v1d"]
+[ext_resource type="Texture2D" uid="uid://dggpxjyg8i6d8" path="res://Assets/Sprites/Effects/forsenSWA.png" id="2_ostix"]
+[ext_resource type="AudioStream" uid="uid://cu8qr0ikgcxbw" path="res://Assets/Audio/Effects/unlucky.mp3" id="3_asbrr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3klnk"]
+atlas = ExtResource("2_ostix")
+region = Rect2(0, 0, 112, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynr27"]
+atlas = ExtResource("2_ostix")
+region = Rect2(112, 0, 112, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7s1c"]
+atlas = ExtResource("2_ostix")
+region = Rect2(224, 0, 112, 112)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uairb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3klnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ynr27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7s1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3klnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ynr27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7s1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3klnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ynr27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7s1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3klnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ynr27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7s1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3klnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ynr27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7s1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3klnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ynr27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7s1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3klnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ynr27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7s1c")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="forsenSWA" type="Node2D"]
+script = ExtResource("1_t3v1d")
+id = "effect_forsenswa"
+effect_name = "forsenSWA"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -2)
+scale = Vector2(0.33, 0.33)
+sprite_frames = SubResource("SpriteFrames_uairb")
+frame = 20
+frame_progress = 1.0
+
+[node name="Unlucky" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_asbrr")
+volume_db = -15.0

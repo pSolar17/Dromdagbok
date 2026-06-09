@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://181ufjdxghbf"]
+
+[ext_resource type="Script" uid="uid://biouwhd0du62t" path="res://Scripts/EscapeSequenceHandler.gd" id="1_rm8ne"]
+[ext_resource type="AudioStream" uid="uid://bj1c7ow224a6d" path="res://Assets/Audio/escape_drone.WAV" id="2_opxrh"]
+
+[sub_resource type="Gradient" id="Gradient_7h6cw"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(1, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kqmeq"]
+gradient = SubResource("Gradient_7h6cw")
+width = 640
+height = 480
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
+
+[node name="EscapeSequenceHandler" type="Node"]
+script = ExtResource("1_rm8ne")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_kqmeq")
+
+[node name="EscapeMusic" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("2_opxrh")

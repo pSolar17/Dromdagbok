@@ -1,0 +1,227 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgwm7jd2q3oyl"]
+
+[ext_resource type="Script" uid="uid://bko6okbv763m3" path="res://Scripts/Classes/Level.gd" id="1_bsvyb"]
+[ext_resource type="PackedScene" uid="uid://m76eqllwbtj0" path="res://Scenes/Objects/Character.tscn" id="2_stn3t"]
+[ext_resource type="Texture2D" uid="uid://b2vik6okgvt6k" path="res://Assets/Sprites/Lidl Worlds/Bad Ending/sugarpile1.jpg" id="5_rwe1q"]
+
+[node name="WorldBadend" type="Node2D" node_paths=PackedStringArray("player")]
+y_sort_enabled = true
+script = ExtResource("1_bsvyb")
+world_size = Vector2(960, 960)
+player = NodePath("Character")
+block_effects = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -100
+offset_left = -480.0
+offset_top = -480.0
+offset_right = 1152.0
+offset_bottom = 864.0
+color = Color(0, 0, 0, 1)
+
+[node name="Character" parent="." instance=ExtResource("2_stn3t")]
+position = Vector2(328, 216)
+
+[node name="SugarPileHolder" type="Node2D" parent="."]
+
+[node name="Sugarpile1" type="Sprite2D" parent="SugarPileHolder"]
+z_index = -1
+position = Vector2(96, 64)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("5_rwe1q")
+
+[node name="Sugarpile2" type="Sprite2D" parent="SugarPileHolder"]
+z_index = -1
+position = Vector2(144, 120)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("5_rwe1q")
+
+[node name="Sugarpile3" type="Sprite2D" parent="SugarPileHolder"]
+z_index = -1
+position = Vector2(72, 144)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("5_rwe1q")
+
+[node name="Sugarpile20" type="Sprite2D" parent="SugarPileHolder"]
+z_index = -1
+position = Vector2(-96, 256)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("5_rwe1q")
+
+[node name="Sugarpile21" type="Sprite2D" parent="SugarPileHolder"]
+z_index = -1
+position = Vector2(-40, 536)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("5_rwe1q")
+
+[node name="Sugarpile22" type="Sprite2D" parent="SugarPileHolder"]
+z_index = -1
+position = Vector2(304, 504)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("5_rwe1q")
+
+[node name="Sugarpile23" type="Sprite2D" parent="SugarPileHolder"]
+z_index = -1
+position = Vector2(328, 32)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("5_rwe1q")
+
+[node name="Sugarpile24" type="Sprite2D" parent="SugarPileHolder"]
+z_index = -1
+position = Vector2(600, 208)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("5_rwe1q")
+
+[node name="Sugarpile25" type="Sprite2D" parent="SugarPileHolder"]
+z_index = -1
+position = Vector2(896, 120)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("5_rwe1q")
+
+[node name="Sugarpile26" type="Sprite2D" parent="SugarPileHolder"]
+z_index = -1
+position = Vector2(840, 24)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("5_rwe1q")
+
+[node name="Sugarpile27" type="Sprite2D" parent="SugarPileHolder"]
+z_index = -1
+position = Vector2(976, 360)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("5_rwe1q")
+
+[node name="Sugarpile28" type="Sprite2D" parent="SugarPileHolder"]
+z_index = -1
+position = Vector2(480, 592)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("5_rwe1q")
+
+[node name="Sugarpile29" type="Sprite2D" parent="SugarPileHolder"]
+z_index = -1
+position = Vector2(176, -72)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("5_rwe1q")
+
+[node name="Sugarpile30" type="Sprite2D" parent="SugarPileHolder"]
+z_index = -1
+position = Vector2(464, -40)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("5_rwe1q")
+
+[node name="Sugarpile31" type="Sprite2D" parent="SugarPileHolder"]
+z_index = -1
+position = Vector2(144, 592)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("5_rwe1q")
+
+[node name="Sugarpile4" type="Sprite2D" parent="SugarPileHolder"]
+z_index = -1
+position = Vector2(480, 368)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("5_rwe1q")
+flip_h = true
+
+[node name="Sugarpile5" type="Sprite2D" parent="SugarPileHolder"]
+z_index = -1
+position = Vector2(416, 400)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("5_rwe1q")
+flip_h = true
+
+[node name="Sugarpile6" type="Sprite2D" parent="SugarPileHolder"]
+z_index = -1
+position = Vector2(552, 48)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("5_rwe1q")
+flip_h = true
+
+[node name="Sugarpile7" type="Sprite2D" parent="SugarPileHolder"]
+z_index = -1
+position = Vector2(80, 384)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("5_rwe1q")
+flip_h = true
+
+[node name="Sugarpile8" type="Sprite2D" parent="SugarPileHolder"]
+z_index = -1
+position = Vector2(96, 336)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("5_rwe1q")
+flip_h = true
+
+[node name="Sugarpile9" type="Sprite2D" parent="SugarPileHolder"]
+z_index = -1
+position = Vector2(160, 376)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("5_rwe1q")
+flip_h = true
+
+[node name="Sugarpile10" type="Sprite2D" parent="SugarPileHolder"]
+z_index = -1
+position = Vector2(184, 312)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("5_rwe1q")
+flip_h = true
+
+[node name="Sugarpile11" type="Sprite2D" parent="SugarPileHolder"]
+z_index = -1
+position = Vector2(232, 400)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("5_rwe1q")
+flip_h = true
+
+[node name="Sugarpile12" type="Sprite2D" parent="SugarPileHolder"]
+z_index = -1
+position = Vector2(136, 432)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("5_rwe1q")
+flip_h = true
+
+[node name="Sugarpile13" type="Sprite2D" parent="SugarPileHolder"]
+z_index = -1
+position = Vector2(728, 544)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("5_rwe1q")
+flip_h = true
+
+[node name="Sugarpile14" type="Sprite2D" parent="SugarPileHolder"]
+z_index = -1
+position = Vector2(872, 456)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("5_rwe1q")
+flip_h = true
+
+[node name="Sugarpile15" type="Sprite2D" parent="SugarPileHolder"]
+z_index = -1
+position = Vector2(920, 248)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("5_rwe1q")
+flip_h = true
+
+[node name="Sugarpile16" type="Sprite2D" parent="SugarPileHolder"]
+z_index = -1
+position = Vector2(760, 96)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("5_rwe1q")
+flip_h = true
+
+[node name="Sugarpile17" type="Sprite2D" parent="SugarPileHolder"]
+z_index = -1
+position = Vector2(720, 304)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("5_rwe1q")
+flip_h = true
+
+[node name="Sugarpile18" type="Sprite2D" parent="SugarPileHolder"]
+z_index = -1
+position = Vector2(-96, 400)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("5_rwe1q")
+flip_h = true
+
+[node name="Sugarpile19" type="Sprite2D" parent="SugarPileHolder"]
+z_index = -1
+position = Vector2(-184, 128)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("5_rwe1q")
+flip_h = true

@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://ixk0jsb0nvwh"]
+
+[ext_resource type="Script" uid="uid://bh8fwcp70yf10" path="res://Scripts/Worlds/Lidl Worlds/TV.gd" id="1_vic1r"]
+[ext_resource type="Texture2D" uid="uid://ysclutc45a21" path="res://Assets/Sprites/Lidl Worlds/tv.png" id="2_140bu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w40o7"]
+size = Vector2(40, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm8mu"]
+atlas = ExtResource("2_140bu")
+region = Rect2(0, 0, 19, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nou7q"]
+atlas = ExtResource("2_140bu")
+region = Rect2(24, 0, 19, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hu45r"]
+atlas = ExtResource("2_140bu")
+region = Rect2(48, 0, 19, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qlugh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jm8mu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nou7q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hu45r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="InteractTV" type="StaticBody2D"]
+collision_layer = 4
+script = ExtResource("1_vic1r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 16)
+shape = SubResource("RectangleShape2D_w40o7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-3, -2)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_qlugh")
+
+[connection signal="interacted_with" from="." to="." method="_on_interacted_with"]

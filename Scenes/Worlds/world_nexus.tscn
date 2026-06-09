@@ -1,0 +1,222 @@
+[gd_scene load_steps=27 format=3 uid="uid://1yv6j8ci764l"]
+
+[ext_resource type="Script" uid="uid://bko6okbv763m3" path="res://Scripts/Classes/Level.gd" id="1_a7h0d"]
+[ext_resource type="Texture2D" uid="uid://bw8uabetgivc8" path="res://Assets/Sprites/Lidl Worlds/The_Nexus.webp" id="2_krk5l"]
+[ext_resource type="PackedScene" uid="uid://m76eqllwbtj0" path="res://Scenes/Objects/Character.tscn" id="2_mr6xo"]
+[ext_resource type="Texture2D" uid="uid://clmlro3o4qir4" path="res://Assets/Sprites/TheCreationOfForsenE.jpg" id="2_mvn10"]
+[ext_resource type="Texture2D" uid="uid://dhvfcd78acvy8" path="res://Assets/Sprites/Lidl Worlds/Horrorterror.webp" id="2_s8o5i"]
+[ext_resource type="Texture2D" uid="uid://i1m41nkqktnj" path="res://Assets/Sprites/Effects/default.png" id="3_f650h"]
+[ext_resource type="Texture2D" uid="uid://csx1s4omxamry" path="res://Assets/Sprites/amongus_vent.png" id="3_ydgiu"]
+[ext_resource type="Texture2D" uid="uid://bkg03wmg6p15i" path="res://Assets/Sprites/monkaTOS.png" id="4_g7g8a"]
+[ext_resource type="PackedScene" uid="uid://75o8vh1r0w00" path="res://Scenes/Objects/Nexus World/DoorShieldFolkNexus.tscn" id="5_s7vpq"]
+[ext_resource type="PackedScene" uid="uid://bie14sm4ow82h" path="res://Scenes/Objects/Common/LevelEntry.tscn" id="5_tfnes"]
+[ext_resource type="PackedScene" uid="uid://bk2yuvs5n040m" path="res://Scenes/Objects/Nexus World/DoorPUBGNexus.tscn" id="6_k2o5l"]
+[ext_resource type="Script" uid="uid://cj28h3uggsdyk" path="res://Scripts/Classes/GameObject.gd" id="6_m7qo3"]
+[ext_resource type="PackedScene" uid="uid://bdpi4fa1lmf1k" path="res://Scenes/Objects/Nexus World/DoorGachiNexus.tscn" id="6_pfom7"]
+[ext_resource type="PackedScene" uid="uid://d3vkxpqwlfu15" path="res://Scenes/Objects/Nexus World/DoorNexus.tscn" id="9_iowx6"]
+[ext_resource type="PackedScene" uid="uid://vte6syt0jy5f" path="res://Scenes/Objects/Nexus World/DoorChristmasNexus.tscn" id="12_14vvc"]
+[ext_resource type="PackedScene" uid="uid://f8i57bq7ps6u" path="res://Scenes/Objects/Nexus World/DoorPuddleNexus.tscn" id="12_tfc1k"]
+[ext_resource type="PackedScene" uid="uid://bkek4jaduhwmd" path="res://Scenes/Objects/Nexus World/DoorMinecraftNexus.tscn" id="13_4qvyf"]
+[ext_resource type="Texture2D" uid="uid://oaytqkv4vrdd" path="res://Assets/Sprites/Lidl Worlds/Twitch.png" id="13_rlnqa"]
+[ext_resource type="PackedScene" uid="uid://br5wlj3nckkip" path="res://Scenes/Objects/Nexus World/DoorPlaceholder.tscn" id="15_t7hg5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_flma0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvqc2"]
+atlas = ExtResource("3_ydgiu")
+region = Rect2(0, 0, 113, 170)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u40ex"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qvqc2")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7t15f"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mnkk8"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uoier"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_07aqn"]
+normal = Vector2(-1, 0)
+
+[node name="WorldNexus" type="Node2D" node_paths=PackedStringArray("player")]
+y_sort_enabled = true
+position = Vector2(0, 1)
+script = ExtResource("1_a7h0d")
+world_size = Vector2(10000, 10000)
+player = NodePath("Character")
+
+[node name="TheNexus" type="Sprite2D" parent="."]
+visible = false
+z_index = -100
+position = Vector2(575, 429)
+scale = Vector2(2, 2)
+texture = ExtResource("2_krk5l")
+
+[node name="Parallax2D2" type="Parallax2D" parent="."]
+modulate = Color(0.497474, 0.497474, 0.497474, 1)
+z_index = -101
+scroll_scale = Vector2(0.16, 0.16)
+
+[node name="Horrorterror" type="Sprite2D" parent="Parallax2D2"]
+position = Vector2(392, 151)
+scale = Vector2(2, 2)
+texture = ExtResource("2_s8o5i")
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+modulate = Color(0.125911, 0.125911, 0.125911, 1)
+z_index = -100
+
+[node name="TheCreationOfForsenE" type="Sprite2D" parent="Parallax2D"]
+material = SubResource("ShaderMaterial_flma0")
+position = Vector2(1152, 199)
+scale = Vector2(6, 6)
+texture = ExtResource("2_mvn10")
+
+[node name="Default" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(576, 95)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_f650h")
+
+[node name="MonkaTos" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(-360, 759)
+texture = ExtResource("4_g7g8a")
+
+[node name="MonkaTos2" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(-608, 407)
+texture = ExtResource("4_g7g8a")
+
+[node name="MonkaTos3" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(-1000, 399)
+texture = ExtResource("4_g7g8a")
+
+[node name="MonkaTos4" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(2576, 599)
+scale = Vector2(2, 2)
+texture = ExtResource("4_g7g8a")
+
+[node name="MonkaTos5" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(3008, 231)
+texture = ExtResource("4_g7g8a")
+
+[node name="MonkaTos6" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(1832, 615)
+texture = ExtResource("4_g7g8a")
+
+[node name="Twitch" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(-720, -33)
+texture = ExtResource("13_rlnqa")
+
+[node name="Character" parent="." instance=ExtResource("2_mr6xo")]
+position = Vector2(576, 111)
+
+[node name="DoorNexus" parent="." instance=ExtResource("9_iowx6")]
+position = Vector2(576, 95)
+level_id = "world_dreamstart"
+level_entry = 1
+
+[node name="DoorShieldFolkNexus" parent="." instance=ExtResource("5_s7vpq")]
+position = Vector2(512, 191)
+level_id = "world_shieldfolk"
+
+[node name="LevelEntryShieldfolk" parent="DoorShieldFolkNexus" instance=ExtResource("5_tfnes")]
+position = Vector2(0, 8)
+scale = Vector2(0.5, 0.5)
+id = 1
+
+[node name="DoorGachiNexus" parent="." instance=ExtResource("6_pfom7")]
+position = Vector2(640, 191)
+
+[node name="LevelEntryGachi" parent="DoorGachiNexus" instance=ExtResource("5_tfnes")]
+position = Vector2(0, 8)
+scale = Vector2(0.5, 0.5)
+id = 69
+
+[node name="DoorPUBGNexus" parent="." instance=ExtResource("6_k2o5l")]
+position = Vector2(768, 253)
+
+[node name="LevelEntryPUBG" parent="DoorPUBGNexus" instance=ExtResource("5_tfnes")]
+position = Vector2(0, 8)
+scale = Vector2(0.5, 0.5)
+id = 360
+
+[node name="DoorPuddleNexus" parent="." instance=ExtResource("12_tfc1k")]
+position = Vector2(832, 381)
+level_id = "world_puddle"
+
+[node name="LevelEntryPuddle" parent="DoorPuddleNexus" instance=ExtResource("5_tfnes")]
+position = Vector2(-0.304871, 7.85522)
+id = 4444
+
+[node name="DoorChristmasNexus" parent="." instance=ExtResource("12_14vvc")]
+position = Vector2(384, 256)
+level_id = "world_christmas"
+
+[node name="LevelEntryChristmas" parent="DoorChristmasNexus" instance=ExtResource("5_tfnes")]
+position = Vector2(0, 8)
+scale = Vector2(0.5, 0.5)
+id = 25
+
+[node name="DoorMinecraftNexus" parent="." instance=ExtResource("13_4qvyf")]
+position = Vector2(320, 382)
+level_id = "world_minecraft"
+
+[node name="DoorPlaceholder" parent="." instance=ExtResource("15_t7hg5")]
+position = Vector2(833, 507)
+
+[node name="DoorPlaceholder2" parent="." instance=ExtResource("15_t7hg5")]
+position = Vector2(768, 637)
+
+[node name="DoorPlaceholder3" parent="." instance=ExtResource("15_t7hg5")]
+position = Vector2(640, 701)
+
+[node name="DoorPlaceholder4" parent="." instance=ExtResource("15_t7hg5")]
+position = Vector2(512, 701)
+
+[node name="DoorPlaceholder5" parent="." instance=ExtResource("15_t7hg5")]
+position = Vector2(384, 637)
+
+[node name="DoorPlaceholder6" parent="." instance=ExtResource("15_t7hg5")]
+position = Vector2(320, 509)
+
+[node name="FakeVentObject" type="Node2D" parent="."]
+position = Vector2(576, 423)
+script = ExtResource("6_m7qo3")
+
+[node name="FakeVent" type="AnimatedSprite2D" parent="FakeVentObject"]
+z_index = -1
+position = Vector2(0, -8)
+scale = Vector2(0.33, 0.33)
+sprite_frames = SubResource("SpriteFrames_u40ex")
+
+[node name="LevelEntryAmonge" parent="FakeVentObject/FakeVent" instance=ExtResource("5_tfnes")]
+position = Vector2(0, 24)
+id = 420
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1248, -889)
+shape = SubResource("WorldBoundaryShape2D_7t15f")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1248, -889)
+shape = SubResource("WorldBoundaryShape2D_mnkk8")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(3552, 1287)
+shape = SubResource("WorldBoundaryShape2D_uoier")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(3552, 1287)
+shape = SubResource("WorldBoundaryShape2D_07aqn")

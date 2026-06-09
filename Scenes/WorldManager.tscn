@@ -1,0 +1,70 @@
+[gd_scene load_steps=32 format=3 uid="uid://colmhlpgpixi3"]
+
+[ext_resource type="Script" uid="uid://d2bqrxna0uhdj" path="res://Scripts/WorldManager.gd" id="1_b0y1p"]
+[ext_resource type="PackedScene" uid="uid://1yv6j8ci764l" path="res://Scenes/Worlds/world_nexus.tscn" id="2_58tdm"]
+[ext_resource type="PackedScene" uid="uid://cmfewxsmo226" path="res://Scenes/Worlds/Level 1/world_gachi.tscn" id="3_bypyn"]
+[ext_resource type="PackedScene" uid="uid://btrrl2e6hh8rk" path="res://Scenes/Worlds/Level 1/world_shieldfolk.tscn" id="4_ucfai"]
+[ext_resource type="PackedScene" uid="uid://dvs5utf0ybnsc" path="res://Scenes/Worlds/Level 2/world_murder.tscn" id="5_5dkx4"]
+[ext_resource type="PackedScene" uid="uid://cb5wkw62y53is" path="res://Scenes/Worlds/Misc. Levels/world_vantrap.tscn" id="6_w7tlv"]
+[ext_resource type="PackedScene" uid="uid://bgovl1tkxsnag" path="res://Scenes/Worlds/Level 1/world_pubg.tscn" id="7_r6j3o"]
+[ext_resource type="PackedScene" uid="uid://dwrgjowlqiuno" path="res://Scenes/Worlds/Level 1/world_anime.tscn" id="8_jvm3a"]
+[ext_resource type="PackedScene" uid="uid://jocwk10i33bp" path="res://Scenes/Worlds/Level 1/world_brainrot.tscn" id="9_urk1a"]
+[ext_resource type="PackedScene" uid="uid://q03pcxo2wvnf" path="res://Scenes/Worlds/Level 1/world_hearthstone.tscn" id="10_effgj"]
+[ext_resource type="PackedScene" uid="uid://c0mi8rkys2dyd" path="res://Scenes/Worlds/Level 2/world_minecraft.tscn" id="11_b8lki"]
+[ext_resource type="PackedScene" uid="uid://igdwo4htqqs5" path="res://Scenes/Worlds/Level 2/world_twitch.tscn" id="12_0ytul"]
+[ext_resource type="PackedScene" uid="uid://naf8j6maunjh" path="res://Scenes/Worlds/Level 2/world_earthbound.tscn" id="13_0ux3l"]
+[ext_resource type="PackedScene" uid="uid://ofxp1bbh3gjy" path="res://Scenes/Worlds/Level 2/world_forsen.tscn" id="14_mqxfm"]
+[ext_resource type="PackedScene" uid="uid://dbnioj1jjb1bc" path="res://Scenes/Worlds/Level 2/world_pokemon.tscn" id="15_g26sc"]
+[ext_resource type="PackedScene" uid="uid://brc1tsw3is07i" path="res://Scenes/Worlds/Level 1/world_sweden.tscn" id="16_vn5uo"]
+[ext_resource type="PackedScene" uid="uid://dkql0y8553ydb" path="res://Scenes/Worlds/Level 2/world_trollface.tscn" id="17_cpd8n"]
+[ext_resource type="PackedScene" uid="uid://b4wict1quqrhm" path="res://Scenes/Worlds/Level 1/world_christmas.tscn" id="18_3tp0t"]
+[ext_resource type="PackedScene" uid="uid://bsoc3vttft2d1" path="res://Scenes/Worlds/Events/tutorial.tscn" id="18_f0yai"]
+[ext_resource type="PackedScene" uid="uid://2dwau0r2tkpn" path="res://Scenes/Worlds/Level 1/world_puddle.tscn" id="19_1f3eb"]
+[ext_resource type="PackedScene" uid="uid://sakfst8mrff5" path="res://Scenes/Worlds/Misc. Levels/world_start.tscn" id="19_tw4ml"]
+[ext_resource type="PackedScene" uid="uid://5147l0u3is2p" path="res://Scenes/Worlds/Misc. Levels/world_devilmachine.tscn" id="20_vw40c"]
+[ext_resource type="PackedScene" uid="uid://cwwcgtr7flftr" path="res://Scenes/Worlds/Misc. Levels/world_earthboundcave.tscn" id="21_2lykw"]
+[ext_resource type="PackedScene" uid="uid://bdmy6a7nnhdnm" path="res://Scenes/Worlds/Misc. Levels/world_startdream.tscn" id="22_pwuci"]
+[ext_resource type="PackedScene" uid="uid://dg40yxgs7tc7q" path="res://Scenes/Worlds/Events/tutorial_start.tscn" id="23_flgth"]
+[ext_resource type="PackedScene" uid="uid://brlp15dhuv5sj" path="res://Scenes/Worlds/world_mainmenu.tscn" id="24_tqtrd"]
+[ext_resource type="PackedScene" uid="uid://cgwm7jd2q3oyl" path="res://Scenes/Worlds/Misc. Levels/world_badend.tscn" id="26_5bofc"]
+[ext_resource type="PackedScene" uid="uid://c7gik6d4cd3lw" path="res://Scenes/Objects/UI/SaveMenu.tscn" id="27_73gxh"]
+[ext_resource type="PackedScene" uid="uid://rymbbm64b4vr" path="res://Scenes/Worlds/world_credits.tscn" id="28_kuhox"]
+[ext_resource type="PackedScene" uid="uid://c8wf7u7ot0qsp" path="res://Scenes/Worlds/world_inmemory.tscn" id="29_0mopi"]
+[ext_resource type="PackedScene" uid="uid://dti58k16pp0ft" path="res://Scenes/Worlds/world_modechoice.tscn" id="30_khw2j"]
+
+[node name="WorldManager" type="Node"]
+script = ExtResource("1_b0y1p")
+worlds = {
+"event_tutorialstart": ExtResource("23_flgth"),
+"world_anime": ExtResource("8_jvm3a"),
+"world_badend": ExtResource("26_5bofc"),
+"world_brainrot": ExtResource("9_urk1a"),
+"world_christmas": ExtResource("18_3tp0t"),
+"world_devilmachine": ExtResource("20_vw40c"),
+"world_dreamstart": ExtResource("22_pwuci"),
+"world_earthbound": ExtResource("13_0ux3l"),
+"world_earthboundcave": ExtResource("21_2lykw"),
+"world_forsen": ExtResource("14_mqxfm"),
+"world_gachi": ExtResource("3_bypyn"),
+"world_hearthstone": ExtResource("10_effgj"),
+"world_mainmenu": ExtResource("24_tqtrd"),
+"world_minecraft": ExtResource("11_b8lki"),
+"world_murder": ExtResource("5_5dkx4"),
+"world_nexus": ExtResource("2_58tdm"),
+"world_pokemon": ExtResource("15_g26sc"),
+"world_pubg": ExtResource("7_r6j3o"),
+"world_puddle": ExtResource("19_1f3eb"),
+"world_shieldfolk": ExtResource("4_ucfai"),
+"world_start": ExtResource("19_tw4ml"),
+"world_sweden": ExtResource("16_vn5uo"),
+"world_trollface": ExtResource("17_cpd8n"),
+"world_twitch": ExtResource("12_0ytul"),
+"world_vantrap": ExtResource("6_w7tlv")
+}
+events = {
+"event_savemenu": ExtResource("27_73gxh"),
+"event_tutorial": ExtResource("18_f0yai"),
+"world_credits": ExtResource("28_kuhox"),
+"world_inmemory": ExtResource("29_0mopi"),
+"world_modechoice": ExtResource("30_khw2j")
+}

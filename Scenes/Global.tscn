@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw7ledqrds21p"]
+
+[ext_resource type="Script" uid="uid://b5br0pcn8h0kr" path="res://Scripts/Global.gd" id="1_osdll"]
+
+[node name="Global" type="Node"]
+process_mode = 3
+script = ExtResource("1_osdll")
+version = "0.2beta"
+recent_level_id = "world_"
+is_dream_world = false

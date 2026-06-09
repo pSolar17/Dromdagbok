@@ -1,0 +1,107 @@
+[gd_scene load_steps=8 format=3 uid="uid://dti58k16pp0ft"]
+
+[ext_resource type="Theme" uid="uid://dblpk24glpxwp" path="res://Assets/Resources/Themes/Default.tres" id="1_1mygw"]
+[ext_resource type="Script" uid="uid://byolvqdl4uqsp" path="res://Scripts/Objects/UI/ModeChoiceMenu.gd" id="2_sgcre"]
+[ext_resource type="AudioStream" uid="uid://xdosmq78ru8s" path="res://Assets/Audio/UI/open.WAV" id="3_3udlh"]
+[ext_resource type="AudioStream" uid="uid://d12h6dteldd46" path="res://Assets/Audio/UI/cursor.WAV" id="4_tlk7o"]
+[ext_resource type="AudioStream" uid="uid://hjntcy4yrccp" path="res://Assets/Audio/UI/cancel.WAV" id="5_kesj7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acxod"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6llf3"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="WorldModechoice" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_1mygw")
+script = ExtResource("2_sgcre")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_1mygw")
+theme_type_variation = &"PanelBorderless"
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 160.0
+offset_right = 416.0
+offset_bottom = 320.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_acxod")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6llf3")
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Mode selection"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ClassicButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Classic"
+
+[node name="QuickButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Quick"
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_6llf3")
+
+[node name="ModeDescLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OKSound" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("3_3udlh")
+volume_db = -10.0
+
+[node name="CursorSound" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("4_tlk7o")
+volume_db = -10.0
+
+[node name="CancelSound" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("5_kesj7")
+volume_db = -10.0
+
+[connection signal="focus_entered" from="PanelContainer/MarginContainer/VBoxContainer/ClassicButton" to="." method="_on_classic_button_focus_entered"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/ClassicButton" to="." method="_on_classic_button_pressed"]
+[connection signal="focus_entered" from="PanelContainer/MarginContainer/VBoxContainer/QuickButton" to="." method="_on_quick_button_focus_entered"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/QuickButton" to="." method="_on_quick_button_pressed"]

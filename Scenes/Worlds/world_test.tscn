@@ -1,0 +1,99 @@
+[gd_scene load_steps=9 format=3 uid="uid://bf7hjxxmowr4c"]
+
+[ext_resource type="PackedScene" uid="uid://m76eqllwbtj0" path="res://Scenes/Objects/Character.tscn" id="1_tvr41"]
+[ext_resource type="Shader" uid="uid://6yoigvasam2f" path="res://Scripts/Shaders/transition_squares.gdshader" id="1_vsjp2"]
+
+[sub_resource type="GDScript" id="GDScript_78j1v"]
+script/source = "extends Level
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed(\"O\"):
+		GUI.screen_fade_out()
+	elif event.is_action_pressed(\"I\"):
+		GUI.screen_fade_in()
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_evl2k"]
+shader = ExtResource("1_vsjp2")
+shader_parameter/progress = -1.0
+shader_parameter/square_size = 4
+shader_parameter/random_influence = 3.0
+shader_parameter/invert = false
+
+[sub_resource type="Gradient" id="Gradient_dt0y1"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y2843"]
+gradient = SubResource("Gradient_dt0y1")
+width = 640
+height = 480
+
+[sub_resource type="GDScript" id="GDScript_h3g7a"]
+script/source = "extends Label
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	pass
+
+
+func _on_area_2d_body_entered(_body: Node2D) -> void:
+	text = str(Global.game_randi())
+	if text == \"69\":
+		text += \" Congrats!\"
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wqiq5"]
+size = Vector2(42, 42)
+
+[node name="WorldTest" type="Node2D" node_paths=PackedStringArray("player")]
+script = SubResource("GDScript_78j1v")
+world_size = Vector2(640, 480)
+player = NodePath("Character")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_evl2k")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_y2843")
+
+[node name="Character" parent="." instance=ExtResource("1_tvr41")]
+position = Vector2(320, 200)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 192.0
+offset_right = 448.0
+offset_bottom = 40.0
+bbcode_enabled = true
+text = "[center]Roll 69 for lethal"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 192.0
+offset_top = 40.0
+offset_right = 448.0
+offset_bottom = 63.0
+text = "0"
+horizontal_alignment = 1
+script = SubResource("GDScript_h3g7a")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(320, 128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_wqiq5")
+
+[connection signal="body_entered" from="Area2D" to="Label" method="_on_area_2d_body_entered"]

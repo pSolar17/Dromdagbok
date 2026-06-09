@@ -1,0 +1,106 @@
+[gd_scene load_steps=8 format=3 uid="uid://c8wf7u7ot0qsp"]
+
+[ext_resource type="Script" uid="uid://bko6okbv763m3" path="res://Scripts/Classes/Level.gd" id="1_i67l6"]
+[ext_resource type="FontFile" uid="uid://cut5fd2vy506a" path="res://Assets/Resources/Fonts/YumeNikkiTitleScreen.ttf" id="2_kfc4f"]
+[ext_resource type="Texture2D" uid="uid://bl1w0waumur8e" path="res://Assets/Sprites/Aristotle.jpg" id="3_o4n2v"]
+[ext_resource type="Script" uid="uid://ecdxedwfuxmx" path="res://Scripts/Classes/LevelChanger.gd" id="4_5waol"]
+
+[sub_resource type="Animation" id="Animation_uqljt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_lrlea"]
+resource_name = "start"
+length = 11.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(5.5, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kyd2h"]
+_data = {
+&"RESET": SubResource("Animation_uqljt"),
+&"start": SubResource("Animation_lrlea")
+}
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_i67l6")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -1168.0
+offset_top = -888.0
+offset_right = 1968.0
+offset_bottom = 1160.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+z_index = 10
+offset_left = -1168.0
+offset_top = -888.0
+offset_right = 1968.0
+offset_bottom = 1160.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="RichTextLabel" parent="."]
+offset_right = 640.0
+offset_bottom = 480.0
+theme_override_fonts/normal_font = ExtResource("2_kfc4f")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]In bright memory
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Aristotle
+2022-2023
+of a true friend"
+
+[node name="Aristotle" type="Sprite2D" parent="."]
+position = Vector2(315, 220)
+scale = Vector2(0.102124, 0.10049)
+texture = ExtResource("3_o4n2v")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kyd2h")
+}
+autoplay = "start"
+
+[node name="LevelChanger" type="Node" parent="."]
+script = ExtResource("4_5waol")
+world_id = "world_credits"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="LevelChanger" method="change_level" unbinds=1]

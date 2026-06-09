@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8e810yhrhr3x"]
+
+[ext_resource type="Script" uid="uid://c5pno3atn00ht" path="res://Scripts/Objects/Tiles/TwitchTile.gd" id="1_diwfk"]
+[ext_resource type="Texture2D" uid="uid://fckjjo16q8al" path="res://Assets/Sprites/Twitch World/kappa.webp" id="2_saoh8"]
+[ext_resource type="Texture2D" uid="uid://gnfba4vpxoyl" path="res://Assets/Sprites/Twitch World/keepo.png" id="3_7hvwg"]
+[ext_resource type="Texture2D" uid="uid://bv4ht000yjhb4" path="res://Assets/Sprites/Twitch World/pogchamp-twitch-own3d.png" id="4_3josk"]
+[ext_resource type="Script" uid="uid://dtlu3shtwlu76" path="res://Scripts/Classes/InteractObject.gd" id="5_8up4b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00hva"]
+size = Vector2(32, 32)
+
+[node name="KappaTile" type="Node2D"]
+script = ExtResource("1_diwfk")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+color = Color(0.497474, 0.497474, 0.497474, 1)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+color = Color(0.753984, 0.753984, 0.753984, 1)
+
+[node name="Sprite1" type="Sprite2D" parent="."]
+scale = Vector2(0.063, 0.063)
+texture = ExtResource("2_saoh8")
+
+[node name="Sprite2" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("3_7hvwg")
+
+[node name="Sprite3" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.063, 0.063)
+texture = ExtResource("4_3josk")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+script = ExtResource("5_8up4b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_00hva")
+
+[connection signal="interacted_with" from="StaticBody2D" to="." method="cycle" unbinds=1]

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddbb471tt1lme"]
+
+[ext_resource type="Script" uid="uid://ce8t42v6k5t6v" path="res://Scripts/Effects/effect_megalul.gd" id="1_x5lq7"]
+[ext_resource type="Texture2D" uid="uid://cg671q80dcyxn" path="res://Assets/Sprites/Effects/MEGALUL.webp" id="2_icvv8"]
+
+[node name="effect_megalul" type="Node2D"]
+script = ExtResource("1_x5lq7")
+id = "effect_megalul"
+effect_name = "MEGALUL"
+effect_desc = "Slows all music down."
+
+[node name="Megalul" type="Sprite2D" parent="."]
+position = Vector2(0, -3)
+scale = Vector2(0.34, 0.34)
+texture = ExtResource("2_icvv8")

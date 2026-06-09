@@ -1,0 +1,110 @@
+[gd_scene load_steps=14 format=3 uid="uid://cb5wkw62y53is"]
+
+[ext_resource type="Script" uid="uid://bko6okbv763m3" path="res://Scripts/Classes/Level.gd" id="1_cgb1x"]
+[ext_resource type="Texture2D" uid="uid://cktifmle461pq" path="res://Assets/Sprites/Lidl Worlds/VanTrapPath.png" id="2_eqhda"]
+[ext_resource type="AudioStream" uid="uid://hocjxajg87ty" path="res://Assets/Audio/Lidl Worlds/Van's Trap.mp3" id="2_g3gt4"]
+[ext_resource type="FontFile" uid="uid://buiirboox77p0" path="res://Assets/Resources/Fonts/Monocraft.otf" id="3_1snx7"]
+[ext_resource type="Shader" uid="uid://bs6rmysxw82m8" path="res://Scripts/Shaders/vantrap_bw.gdshader" id="3_7kqds"]
+[ext_resource type="Script" uid="uid://ckmwertpk2o1d" path="res://Scripts/Objects/TimedText.gd" id="3_x835s"]
+[ext_resource type="VideoStream" uid="uid://d1ocfsaisi1at" path="res://Assets/Videos/Van.ogv" id="5_esgfe"]
+[ext_resource type="PackedScene" uid="uid://m76eqllwbtj0" path="res://Scenes/Objects/Character.tscn" id="8_ftnvc"]
+[ext_resource type="Script" uid="uid://cj28h3uggsdyk" path="res://Scripts/Classes/GameObject.gd" id="9_6fijm"]
+[ext_resource type="Texture2D" uid="uid://dsosoh1lvuq7k" path="res://Assets/Sprites/Lidl Worlds/Uboa.png" id="10_qpca7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pei87"]
+shader = ExtResource("3_7kqds")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_k78ox"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p0xr5"]
+normal = Vector2(0, 1)
+
+[node name="WorldVantrap" type="Node2D" node_paths=PackedStringArray("player")]
+script = ExtResource("1_cgb1x")
+world_size = Vector2(1600, 480)
+player = NodePath("Character")
+level_track = ExtResource("2_g3gt4")
+limit_left = -1e+07
+limit_top = 0.0
+limit_right = 1e+07
+limit_bottom = 480.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -101
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TimedText" type="RichTextLabel" parent="CanvasLayer"]
+visible = false
+z_index = 2
+offset_right = 256.0
+offset_bottom = 96.0
+theme_override_fonts/normal_font = ExtResource("3_1snx7")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "LOST TO VaN [img]res://Assets/Sprites/lidl_omegalul.webp[/img]
+Press W to wake up"
+script = ExtResource("3_x835s")
+
+[node name="Timer" type="Timer" parent="CanvasLayer/TimedText"]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="Background" type="Parallax2D" parent="."]
+process_mode = 3
+z_index = -100
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(640, 0)
+repeat_times = 2
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Background"]
+material = SubResource("ShaderMaterial_pei87")
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.667, 0.667)
+stream = ExtResource("5_esgfe")
+volume_db = -80.0
+autoplay = true
+loop = true
+
+[node name="Path" type="Parallax2D" parent="."]
+z_index = 1
+repeat_size = Vector2(1600, 0)
+repeat_times = 2
+
+[node name="VanTrapPath" type="Sprite2D" parent="Path"]
+scale = Vector2(2, 2)
+texture = ExtResource("2_eqhda")
+centered = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 384)
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-32, 48)
+shape = SubResource("WorldBoundaryShape2D_k78ox")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-32, 23)
+shape = SubResource("WorldBoundaryShape2D_p0xr5")
+
+[node name="Character" parent="." instance=ExtResource("8_ftnvc")]
+position = Vector2(48, 416)
+
+[node name="Uboa" type="Node2D" parent="."]
+position = Vector2(409, 448)
+script = ExtResource("9_6fijm")
+
+[node name="Uboa" type="Sprite2D" parent="Uboa"]
+scale = Vector2(2, 2)
+texture = ExtResource("10_qpca7")
+
+[connection signal="timeout" from="CanvasLayer/TimedText/Timer" to="CanvasLayer/TimedText" method="_on_timer_timeout"]

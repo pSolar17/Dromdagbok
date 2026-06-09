@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cy5gffwywltsf"]
+
+[ext_resource type="Script" uid="uid://cj28h3uggsdyk" path="res://Scripts/Classes/GameObject.gd" id="1_wqh7x"]
+[ext_resource type="Texture2D" uid="uid://mp0feh082arl" path="res://Assets/Sprites/Tiles/GachiPurple.png" id="2_r4qo0"]
+
+[node name="TileGachiPurple" type="Node2D"]
+z_index = -3
+script = ExtResource("1_wqh7x")
+
+[node name="GachiPurple" type="Sprite2D" parent="."]
+modulate = Color(0.252028, 0.252028, 0.252028, 1)
+texture = ExtResource("2_r4qo0")

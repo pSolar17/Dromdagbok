@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnh22xy4kikj7"]
+
+[ext_resource type="Script" uid="uid://br1aa811d7uwe" path="res://Scripts/MusicPlayer.gd" id="1_87oyb"]
+[ext_resource type="AudioStream" uid="uid://br0y2iee5kba3" path="res://Assets/Audio/door_openclose.ogg" id="2_5758t"]
+
+[node name="MusicPlayer" type="Node"]
+process_mode = 3
+script = ExtResource("1_87oyb")
+
+[node name="MainPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="OverridePlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -80.0
+
+[node name="SoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_5758t")
+
+[node name="PositionalSoundPlayer" type="AudioStreamPlayer2D" parent="."]

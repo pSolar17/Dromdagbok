@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://7xvke45kyd3v"]
+
+[ext_resource type="Script" uid="uid://bfrkp7y48n6fl" path="res://Scripts/Effects/effect_hahaa.gd" id="1_6fmk7"]
+[ext_resource type="Texture2D" uid="uid://c01hgear0nrvj" path="res://Assets/Sprites/Effects/haHAA.webp" id="2_0op8f"]
+
+[node name="haHAA" type="Node2D"]
+script = ExtResource("1_6fmk7")
+id = "effect_hahaa"
+effect_name = "haHAA"
+effect_desc = "Hello forsen, advice dev here"
+
+[node name="HaHaa" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("2_0op8f")
+
+[node name="Line2D" type="Line2D" parent="."]
+z_index = -1
+points = PackedVector2Array(0, 0, 0, 0)
+width = 2.0

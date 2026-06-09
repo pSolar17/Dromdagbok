@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://s2e5t00kpykw"]
+
+[ext_resource type="Theme" uid="uid://dblpk24glpxwp" path="res://Assets/Resources/Themes/Default.tres" id="1_lvlvt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_thdqh"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="MedicalNote" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_lvlvt")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_thdqh")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[color=yellow][u]12/16/20XX
+
+Patient: Fors, Hans Eli Sebastian[/u][/color]
+
+The patient's mental condition is still unstable. We have tried every humane option, but no treatment has shown any significant progress.
+
+Sebastian still doesn't recognize his wife and friends, who came to wish him a happy birthday. He goes on a rampage if his computer is unplugged or taken away, and he still spends up to 16 hours daily sleeping.
+
+During our scheduled meeting, I asked Sebastian about his dreams. He told me rather... peculiar things. Some are complete fantasies produced by his diseased mind, like 'MADMONQ' and 'Minecraft'. Others, like 'gacki backi' or whatever it's called, are simply degrading. And some are too graphic to be described on a medical note.
+
+Maybe, just maybe... His dreams are the key to solving the mystery of his disorder. But if that's true, then Sebastian is the only one capable of doing it.
+
+Otherwise, he will be retired, or put down, in 7 days."
+fit_content = true

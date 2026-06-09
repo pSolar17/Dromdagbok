@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://75o8vh1r0w00"]
+
+[ext_resource type="Script" uid="uid://yj41e6hwoxs2" path="res://Scripts/Objects/DoorNexus.gd" id="1_1kwny"]
+[ext_resource type="Script" uid="uid://dtlu3shtwlu76" path="res://Scripts/Classes/InteractObject.gd" id="1_c2fh0"]
+[ext_resource type="Texture2D" uid="uid://cy7ie82ctve6m" path="res://Assets/Sprites/Yume Nikki - Objects.png" id="2_aw2ov"]
+[ext_resource type="Texture2D" uid="uid://dib5ild5m8grp" path="res://Assets/Sprites/NexusEffect.png" id="5_lwv7x"]
+[ext_resource type="AudioStream" uid="uid://bulrvts6fyl4l" path="res://Assets/Audio/Nexus World/yume_nexusdoor.mp3" id="6_c7m30"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10uc0"]
+atlas = ExtResource("2_aw2ov")
+region = Rect2(436, 242, 17, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpsgn"]
+atlas = ExtResource("2_aw2ov")
+region = Rect2(460, 242, 17, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sen0p"]
+atlas = ExtResource("2_aw2ov")
+region = Rect2(484, 242, 17, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ywm7u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10uc0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpsgn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sen0p")
+}],
+"loop": false,
+"name": &"open",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0rfg7"]
+size = Vector2(13, 6.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f4cc0"]
+size = Vector2(16, 8)
+
+[node name="DoorShieldFolkNexus" type="Node2D"]
+process_mode = 3
+scale = Vector2(2, 2)
+script = ExtResource("1_1kwny")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -15)
+sprite_frames = SubResource("SpriteFrames_ywm7u")
+animation = &"open"
+
+[node name="InteractObject" type="StaticBody2D" parent="."]
+position = Vector2(0, -14)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_c2fh0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractObject"]
+position = Vector2(0, 10)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_0rfg7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -6)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_f4cc0")
+
+[node name="NexusEffect" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 5
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("5_lwv7x")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_c7m30")
+
+[connection signal="interacted_with" from="InteractObject" to="." method="_on_interact_object_interacted_with"]

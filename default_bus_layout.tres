@@ -1,0 +1,46 @@
+[gd_resource type="AudioBusLayout" load_steps=6 format=3 uid="uid://o2e1t60gd18b"]
+
+[sub_resource type="AudioEffectEQ" id="AudioEffectEQ_0uxgv"]
+resource_name = "EQ"
+band_db/32_hz = 12.0
+band_db/100_hz = 12.0
+band_db/1000_hz = -60.0
+band_db/3200_hz = -60.0
+band_db/10000_hz = -60.0
+
+[sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_0hu6v"]
+resource_name = "Distortion"
+drive = 0.15
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_56i7i"]
+resource_name = "Compressor"
+threshold = -10.1
+
+[sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_1hwc0"]
+resource_name = "Distortion"
+drive = 0.6
+post_gain = -5.0
+
+[sub_resource type="AudioEffectEQ" id="AudioEffectEQ_gm5dj"]
+resource_name = "EQ"
+band_db/32_hz = 5.0
+band_db/100_hz = 5.0
+
+[resource]
+bus/0/volume_db = -0.0105095
+bus/0/effect/0/effect = SubResource("AudioEffectEQ_0uxgv")
+bus/0/effect/0/enabled = false
+bus/0/effect/1/effect = SubResource("AudioEffectDistortion_0hu6v")
+bus/0/effect/1/enabled = false
+bus/0/effect/2/effect = SubResource("AudioEffectCompressor_56i7i")
+bus/0/effect/2/enabled = false
+bus/1/name = &"PUBG"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectDistortion_1hwc0")
+bus/1/effect/0/enabled = true
+bus/1/effect/1/effect = SubResource("AudioEffectEQ_gm5dj")
+bus/1/effect/1/enabled = true

@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://b21iuxkcmhksm"]
+
+[ext_resource type="Script" uid="uid://cbq5peu4kasym" path="res://Scripts/Worlds/PUBG World/StreamSniper.gd" id="1_p1386"]
+[ext_resource type="Script" uid="uid://dtlu3shtwlu76" path="res://Scripts/Classes/InteractObject.gd" id="2_qrkp4"]
+[ext_resource type="Texture2D" uid="uid://c58gdj75tkrij" path="res://Assets/Sprites/PUBG World/ZULUL.png" id="3_jqcp5"]
+[ext_resource type="AudioStream" uid="uid://bb8x3rvumebtx" path="res://Assets/Audio/mus_ruins.ogg" id="4_4hmax"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3firt"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4bkgl"]
+size = Vector2(32, 32)
+
+[node name="StreamSniper" type="Node2D"]
+script = ExtResource("1_p1386")
+
+[node name="TeleportArea2D" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TeleportArea2D"]
+shape = SubResource("RectangleShape2D_3firt")
+
+[node name="InteractObject" type="StaticBody2D" parent="."]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("2_qrkp4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractObject"]
+shape = SubResource("RectangleShape2D_4bkgl")
+
+[node name="Zulul" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("3_jqcp5")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("4_4hmax")
+volume_db = -10.0
+autoplay = true
+max_distance = 640.0
+attenuation = 3.0
+bus = &"PUBG"
+parameters/looping = true
+
+[node name="DeathSoundPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = -10.0
+max_distance = 640.0
+attenuation = 3.0
+bus = &"PUBG"
+
+[connection signal="body_entered" from="TeleportArea2D" to="." method="_on_teleport_area_2d_body_entered"]
+[connection signal="interacted_with" from="InteractObject" to="." method="die" unbinds=1]

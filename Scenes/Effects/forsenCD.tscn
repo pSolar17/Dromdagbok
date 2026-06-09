@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://owoh523ks0pw"]
+
+[ext_resource type="Script" uid="uid://g1ihvtuecy12" path="res://Scripts/Effects/effect_forsencd.gd" id="1_er3cg"]
+[ext_resource type="Texture2D" uid="uid://0tulgtxuk2jd" path="res://Assets/Sprites/Effects/forsenCD.png" id="2_7m4oj"]
+
+[node name="ForsenCD" type="Node2D"]
+script = ExtResource("1_er3cg")
+id = "effect_forsencd"
+effect_name = "forsenCD"
+effect_desc = "Removes collision. Run is still valid"
+
+[node name="ForsenCd" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("2_7m4oj")

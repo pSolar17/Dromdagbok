@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://diq0c02e5v0gk"]
+
+[ext_resource type="Script" uid="uid://cyofyjqq4eo28" path="res://Scripts/Objects/Door.gd" id="1_h1hm3"]
+[ext_resource type="Texture2D" uid="uid://bc4bxw04w7yus" path="res://Assets/Sprites/Gachi World/DoorGachi.png" id="2_s8ong"]
+[ext_resource type="Script" uid="uid://dtlu3shtwlu76" path="res://Scripts/Classes/InteractObject.gd" id="3_30wqg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lprys"]
+atlas = ExtResource("2_s8ong")
+region = Rect2(0, 0, 17, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_011ai"]
+atlas = ExtResource("2_s8ong")
+region = Rect2(17, 0, 17, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xyicr"]
+atlas = ExtResource("2_s8ong")
+region = Rect2(34, 0, 17, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oootw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lprys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_011ai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xyicr")
+}],
+"loop": false,
+"name": &"open",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0rfg7"]
+size = Vector2(13, 6.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f4cc0"]
+size = Vector2(16, 8)
+
+[node name="DoorGachi" type="Node2D" groups=["Important"]]
+process_mode = 3
+script = ExtResource("1_h1hm3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -15)
+sprite_frames = SubResource("SpriteFrames_oootw")
+animation = &"open"
+
+[node name="InteractObject" type="StaticBody2D" parent="."]
+position = Vector2(0, -14)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("3_30wqg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractObject"]
+position = Vector2(0, 10)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_0rfg7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -6)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_f4cc0")
+
+[connection signal="interacted_with" from="InteractObject" to="." method="_on_interact_object_interacted_with"]

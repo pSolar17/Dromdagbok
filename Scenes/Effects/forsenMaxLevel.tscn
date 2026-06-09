@@ -1,0 +1,195 @@
+[gd_scene load_steps=26 format=3 uid="uid://dmm4e1gcwiroe"]
+
+[ext_resource type="Script" uid="uid://cb6mso4tq4h8b" path="res://Scripts/Effects/effect_forsenmaxlevel.gd" id="1_asb0t"]
+[ext_resource type="Texture2D" uid="uid://uatcfskaurcu" path="res://Assets/Sprites/Effects/forsenMaxLevel.png" id="2_kynqc"]
+[ext_resource type="AudioStream" uid="uid://dciu7670tpnbk" path="res://Assets/Audio/Effects/thunder.mp3" id="3_ufiu5"]
+[ext_resource type="AudioStream" uid="uid://ch5g8hv4t26tp" path="res://Assets/Audio/Effects/rain.wav" id="4_dp7at"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ico5w"]
+atlas = ExtResource("2_kynqc")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtahx"]
+atlas = ExtResource("2_kynqc")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8ggr"]
+atlas = ExtResource("2_kynqc")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27hkn"]
+atlas = ExtResource("2_kynqc")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urqrr"]
+atlas = ExtResource("2_kynqc")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brow4"]
+atlas = ExtResource("2_kynqc")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57dfh"]
+atlas = ExtResource("2_kynqc")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3s5k"]
+atlas = ExtResource("2_kynqc")
+region = Rect2(384, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tr6dn"]
+atlas = ExtResource("2_kynqc")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_va6jl"]
+atlas = ExtResource("2_kynqc")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1n8t"]
+atlas = ExtResource("2_kynqc")
+region = Rect2(256, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54l44"]
+atlas = ExtResource("2_kynqc")
+region = Rect2(384, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g85kh"]
+atlas = ExtResource("2_kynqc")
+region = Rect2(0, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpmvm"]
+atlas = ExtResource("2_kynqc")
+region = Rect2(128, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yn7ej"]
+atlas = ExtResource("2_kynqc")
+region = Rect2(256, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4j4h"]
+atlas = ExtResource("2_kynqc")
+region = Rect2(384, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_def27"]
+atlas = ExtResource("2_kynqc")
+region = Rect2(0, 512, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8jwos"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ico5w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jtahx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8ggr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_27hkn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urqrr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_brow4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_57dfh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3s5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tr6dn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_va6jl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1n8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54l44")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g85kh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kpmvm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yn7ej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4j4h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_def27")
+}],
+"loop": false,
+"name": &"default",
+"speed": 17.0
+}]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_63xjw"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(-320, -60, 0)
+emission_shape = 3
+emission_box_extents = Vector3(1280, 120, 1)
+angle_min = 10.0
+angle_max = 15.0
+direction = Vector3(0, 0, 0)
+initial_velocity_max = 100.0
+gravity = Vector3(500, 3000, 0)
+scale_max = 2.0
+
+[sub_resource type="Gradient" id="Gradient_7v3pc"]
+colors = PackedColorArray(1, 1, 1, 0.25098, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qlvr6"]
+gradient = SubResource("Gradient_7v3pc")
+width = 1
+height = 16
+fill_from = Vector2(0, 0.868217)
+
+[node name="forsenMaxLevel" type="Node2D"]
+script = ExtResource("1_asb0t")
+id = "effect_forsenmaxlevel"
+effect_name = "forsenMaxLevel"
+effect_desc = "You should fix your life NOW!"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -5)
+scale = Vector2(0.33, 0.33)
+sprite_frames = SubResource("SpriteFrames_8jwos")
+frame = 16
+frame_progress = 1.0
+
+[node name="Thunder" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ufiu5")
+volume_db = -10.0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+z_index = 2
+position = Vector2(0, -280)
+amount = 16384
+process_material = SubResource("ParticleProcessMaterial_63xjw")
+texture = SubResource("GradientTexture2D_qlvr6")
+lifetime = 10.0
+preprocess = 15.0
+
+[node name="Rain" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_dp7at")
+autoplay = true

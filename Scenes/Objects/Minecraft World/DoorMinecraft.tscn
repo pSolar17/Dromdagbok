@@ -1,0 +1,74 @@
+[gd_scene load_steps=10 format=3 uid="uid://7fkdt0is4725"]
+
+[ext_resource type="Script" uid="uid://cyofyjqq4eo28" path="res://Scripts/Objects/Door.gd" id="1_816ys"]
+[ext_resource type="Texture2D" uid="uid://cid5grmkglqhp" path="res://Assets/Sprites/Minecraft World/door.png" id="2_swdx1"]
+[ext_resource type="Script" uid="uid://dtlu3shtwlu76" path="res://Scripts/Classes/InteractObject.gd" id="3_aq75v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3tvuo"]
+atlas = ExtResource("2_swdx1")
+region = Rect2(0, 0, 293, 590)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1n3to"]
+atlas = ExtResource("2_swdx1")
+region = Rect2(293, 0, 293, 590)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3i2c"]
+atlas = ExtResource("2_swdx1")
+region = Rect2(586, 0, 293, 590)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_shgtl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3tvuo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1n3to")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3i2c")
+}],
+"loop": false,
+"name": &"open",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0rfg7"]
+size = Vector2(13, 6.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f4cc0"]
+size = Vector2(16, 8)
+
+[node name="DoorShieldFolk" type="Node2D" groups=["Important"]]
+process_mode = 3
+scale = Vector2(2, 2)
+script = ExtResource("1_816ys")
+level_id = "world_nexus"
+level_entry = 1528
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -15)
+scale = Vector2(0.055, 0.055)
+sprite_frames = SubResource("SpriteFrames_shgtl")
+animation = &"open"
+
+[node name="InteractObject" type="StaticBody2D" parent="."]
+position = Vector2(0, -14)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("3_aq75v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractObject"]
+position = Vector2(0, 10)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_0rfg7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -6)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_f4cc0")
+
+[connection signal="interacted_with" from="InteractObject" to="." method="_on_interact_object_interacted_with"]

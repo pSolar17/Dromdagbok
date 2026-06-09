@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8dp7w5o27a53"]
+
+[ext_resource type="Script" uid="uid://dtlu3shtwlu76" path="res://Scripts/Classes/InteractObject.gd" id="1_30k7i"]
+[ext_resource type="Script" uid="uid://882j8n1oonh5" path="res://Scripts/Worlds/Lidl Worlds/CloneMachine.gd" id="1_f5f3q"]
+[ext_resource type="AudioStream" uid="uid://h1ko82th4iby" path="res://Assets/Audio/Effects/unequip_effect.WAV" id="3_qnn8x"]
+[ext_resource type="AudioStream" uid="uid://cw4xelu4u8eav" path="res://Assets/Audio/Common/EffectObtained.WAV" id="4_7uia7"]
+[ext_resource type="AudioStream" uid="uid://c7433jmiqrscu" path="res://Assets/Audio/Lidl Worlds/cm_e.mp3" id="5_nu10j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tdjhn"]
+size = Vector2(128, 32)
+
+[node name="CloneMachine" type="Node2D"]
+script = ExtResource("1_f5f3q")
+
+[node name="InteractObject" type="StaticBody2D" parent="."]
+collision_layer = 4
+script = ExtResource("1_30k7i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractObject"]
+shape = SubResource("RectangleShape2D_tdjhn")
+
+[node name="EffectDeposited" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_qnn8x")
+volume_db = -5.0
+
+[node name="EffectReclaimed" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_7uia7")
+volume_db = -5.0
+
+[node name="Explosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_nu10j")
+volume_db = -5.0
+
+[connection signal="interacted_with" from="InteractObject" to="." method="_on_interact_object_interacted_with"]

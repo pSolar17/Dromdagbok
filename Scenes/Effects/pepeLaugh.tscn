@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3qplsjlbljxd"]
+
+[ext_resource type="Script" uid="uid://dwlcleqolkx53" path="res://Scripts/Effects/effect_pepelaugh.gd" id="1_5lhti"]
+[ext_resource type="Texture2D" uid="uid://irfnvmv08fhl" path="res://Assets/Sprites/Effects/pepeLaugh.png" id="2_4msi2"]
+
+[node name="pepeLaugh" type="Node2D"]
+script = ExtResource("1_5lhti")
+id = "effect_pepelaugh"
+effect_name = "pepeLaugh"
+effect_desc = "He doesn't know..."
+
+[node name="PepeLaugh" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_4msi2")

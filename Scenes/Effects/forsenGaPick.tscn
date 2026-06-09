@@ -1,0 +1,269 @@
+[gd_scene load_steps=18 format=3 uid="uid://badwno05put3p"]
+
+[ext_resource type="Script" uid="uid://du20qsno6ftg8" path="res://Scripts/Effects/effect_forsengapick.gd" id="1_uj1cs"]
+[ext_resource type="Texture2D" uid="uid://pm2mndktjdgf" path="res://Assets/Sprites/Effects/forsenGaPick.png" id="2_x48jc"]
+[ext_resource type="Texture2D" uid="uid://coyexqfcjnce3" path="res://Assets/Sprites/bitcoin.png" id="3_15qab"]
+[ext_resource type="FontFile" uid="uid://buiirboox77p0" path="res://Assets/Resources/Fonts/Monocraft.otf" id="4_07ilj"]
+[ext_resource type="AudioStream" uid="uid://n21qr6ci7fqs" path="res://Assets/Audio/Effects/pickaxe_mining.wav" id="5_vygxw"]
+[ext_resource type="AudioStream" uid="uid://juu30pvvc6te" path="res://Assets/Audio/Effects/cash_register.mp3" id="6_whdrx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hvbe"]
+atlas = ExtResource("2_x48jc")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bu6ey"]
+atlas = ExtResource("2_x48jc")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8x2af"]
+atlas = ExtResource("2_x48jc")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnghq"]
+atlas = ExtResource("2_x48jc")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yg6pk"]
+atlas = ExtResource("2_x48jc")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ud5rb"]
+atlas = ExtResource("2_x48jc")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfjvh"]
+atlas = ExtResource("2_x48jc")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kndtp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hvbe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bu6ey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8x2af")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnghq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yg6pk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ud5rb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfjvh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hvbe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bu6ey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8x2af")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnghq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yg6pk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ud5rb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfjvh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hvbe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bu6ey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8x2af")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnghq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yg6pk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ud5rb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfjvh")
+}],
+"loop": false,
+"name": &"mine",
+"speed": 20.0
+}]
+
+[sub_resource type="Animation" id="Animation_ldlak"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bitcoin:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bitcoin:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(96, 48)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(120, -16)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1u1kt"]
+resource_name = "TextAppear"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bitcoin:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bitcoin:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(40, 48), Vector2(40, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(64, 32), Vector2(64, -16)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label:modulate")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cb8pd"]
+_data = {
+&"RESET": SubResource("Animation_ldlak"),
+&"TextAppear": SubResource("Animation_1u1kt")
+}
+
+[node name="forsenGaPick" type="Node2D" node_paths=PackedStringArray("animated_sprite")]
+script = ExtResource("1_uj1cs")
+id = "effect_forsengapick"
+effect_name = "forsenGaPick"
+effect_desc = "Lidl = Bitcoin miner OMEGALUL"
+auto_detect_sprite = false
+animated_sprite = NodePath("AnimatedSprite2D")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 223.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("4_07ilj")
+theme_override_font_sizes/font_size = 23
+text = "GPU Usage: 97%"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -5)
+scale = Vector2(0.33, 0.33)
+sprite_frames = SubResource("SpriteFrames_kndtp")
+animation = &"mine"
+
+[node name="Bitcoin" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(96, 48)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("3_15qab")
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 120.0
+offset_top = -16.0
+offset_right = 259.0
+offset_bottom = 16.0
+theme_override_fonts/font = ExtResource("4_07ilj")
+text = "+ 0.00001 BTC"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cb8pd")
+}
+
+[node name="PickaxeMine" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_vygxw")
+
+[node name="CashRegister" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_whdrx")

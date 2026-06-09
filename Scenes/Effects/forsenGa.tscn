@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c813xa8wkyall"]
+
+[ext_resource type="Script" uid="uid://84drfspyonjt" path="res://Scripts/Effects/effect_forsenga.gd" id="1_fi8jq"]
+[ext_resource type="Texture2D" uid="uid://b4q40tgam0f74" path="res://Assets/Sprites/Effects/forsenGa.png" id="2_a8s8f"]
+[ext_resource type="AudioStream" uid="uid://bcamk4gqlaagx" path="res://Assets/Audio/Effects/forsenga.mp3" id="3_tpvme"]
+
+[node name="forsenGa" type="Node2D"]
+script = ExtResource("1_fi8jq")
+id = "effect_forsenga"
+effect_name = "forsenGa"
+effect_desc = "Menytext på svenska"
+
+[node name="ForsenGa" type="Sprite2D" parent="."]
+position = Vector2(0, -5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_a8s8f")
+
+[node name="forsenGa" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_tpvme")
+volume_db = 5.0

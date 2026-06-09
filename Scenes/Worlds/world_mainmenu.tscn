@@ -1,0 +1,428 @@
+[gd_scene load_steps=15 format=3 uid="uid://brlp15dhuv5sj"]
+
+[ext_resource type="Theme" uid="uid://dblpk24glpxwp" path="res://Assets/Resources/Themes/Default.tres" id="1_fl3kk"]
+[ext_resource type="Script" uid="uid://c62h4yilr0xt0" path="res://Scripts/Objects/UI/MainMenu.gd" id="2_ywu0i"]
+[ext_resource type="FontFile" uid="uid://cut5fd2vy506a" path="res://Assets/Resources/Fonts/YumeNikkiTitleScreen.ttf" id="3_foa87"]
+[ext_resource type="Texture2D" uid="uid://died6jkx0wx1v" path="res://Assets/Sprites/Title/main_menu_v0.2beta.png" id="3_kt1ky"]
+[ext_resource type="Texture2D" uid="uid://chsb83dplqas3" path="res://Assets/Sprites/Effects/forsenLookingAtYou.webp" id="5_2qo01"]
+[ext_resource type="AudioStream" uid="uid://bv6eq3aan85m8" path="res://Assets/Audio/title_forsen.wav" id="6_ayof1"]
+[ext_resource type="AudioStream" uid="uid://d12h6dteldd46" path="res://Assets/Audio/UI/cursor.WAV" id="7_5qfc8"]
+[ext_resource type="AudioStream" uid="uid://xdosmq78ru8s" path="res://Assets/Audio/UI/open.WAV" id="8_fpksq"]
+[ext_resource type="AudioStream" uid="uid://hjntcy4yrccp" path="res://Assets/Audio/UI/cancel.WAV" id="8_q14xo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0nsd"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k1gn2"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_ml25q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TabContainer/TitleScreen/PanelContainer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TabContainer/TitleScreen/PanelContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(226, 296)]
+}
+
+[sub_resource type="Animation" id="Animation_li3ur"]
+resource_name = "start"
+length = 0.6
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TabContainer/TitleScreen/PanelContainer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1e-05), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TabContainer/TitleScreen/PanelContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(226, 360), Vector2(226, 296)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TabContainer/TitleScreen/PanelContainer/MarginContainer/VBoxContainer/NewGameButton")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"grab_focus"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_us8xr"]
+_data = {
+&"RESET": SubResource("Animation_ml25q"),
+&"start": SubResource("Animation_li3ur")
+}
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_fl3kk")
+script = ExtResource("2_ywu0i")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 1
+tabs_visible = false
+
+[node name="TitleScreen" type="Control" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Panel" type="Panel" parent="TabContainer/TitleScreen"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_b0nsd")
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/TitleScreen"]
+layout_mode = 2
+offset_right = 640.0
+offset_bottom = 480.0
+texture = ExtResource("3_kt1ky")
+
+[node name="Label" type="Label" parent="TabContainer/TitleScreen"]
+layout_mode = 2
+offset_left = 221.0
+offset_top = 179.0
+offset_right = 421.0
+offset_bottom = 211.0
+theme_override_colors/font_shadow_color = Color(0.352941, 0.235294, 0.352941, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("3_foa87")
+theme_override_font_sizes/font_size = 32
+text = "FORSEN NIKKI"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="TabContainer/TitleScreen"]
+layout_mode = 0
+offset_left = 226.0
+offset_top = 296.0
+offset_right = 417.0
+offset_bottom = 424.0
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/TitleScreen/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 11
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 11
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/TitleScreen/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="NewGameButton" type="Button" parent="TabContainer/TitleScreen/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+action_mode = 0
+button_mask = 0
+text = "New Game"
+alignment = 0
+
+[node name="DreamDiaryButton" type="Button" parent="TabContainer/TitleScreen/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+action_mode = 0
+button_mask = 0
+text = "Dream Diary"
+alignment = 0
+
+[node name="QuitButton" type="Button" parent="TabContainer/TitleScreen/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+action_mode = 0
+button_mask = 0
+text = "Quit
+"
+alignment = 0
+
+[node name="DreamDiary" type="Control" parent="TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Panel" type="Panel" parent="TabContainer/DreamDiary"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_k1gn2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/DreamDiary"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 80.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="SaveSlot1" type="PanelContainer" parent="TabContainer/DreamDiary/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/DreamDiary/VBoxContainer/SaveSlot1"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 11
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/DreamDiary/VBoxContainer/SaveSlot1/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Page1Button" type="Button" parent="TabContainer/DreamDiary/VBoxContainer/SaveSlot1/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+focus_neighbor_bottom = NodePath("../../../../SaveSlot2/MarginContainer/VBoxContainer/Page2Button")
+theme_override_font_sizes/font_size = 23
+action_mode = 0
+button_mask = 0
+text = "Page 1"
+alignment = 0
+
+[node name="Forsen1" type="Label" parent="TabContainer/DreamDiary/VBoxContainer/SaveSlot1/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Forsen"
+
+[node name="EffectHealth1" type="Label" parent="TabContainer/DreamDiary/VBoxContainer/SaveSlot1/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "E 1   ♥  1"
+
+[node name="SaveSlot2" type="PanelContainer" parent="TabContainer/DreamDiary/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/DreamDiary/VBoxContainer/SaveSlot2"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 11
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/DreamDiary/VBoxContainer/SaveSlot2/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Page2Button" type="Button" parent="TabContainer/DreamDiary/VBoxContainer/SaveSlot2/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+focus_neighbor_top = NodePath("../../../../SaveSlot1/MarginContainer/VBoxContainer/Page1Button")
+focus_neighbor_bottom = NodePath("../../../../SaveSlot3/MarginContainer/VBoxContainer/Page3Button")
+theme_override_font_sizes/font_size = 23
+action_mode = 0
+button_mask = 0
+text = "Page 2"
+alignment = 0
+
+[node name="Forsen2" type="Label" parent="TabContainer/DreamDiary/VBoxContainer/SaveSlot2/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Forsen"
+
+[node name="EffectHealth2" type="Label" parent="TabContainer/DreamDiary/VBoxContainer/SaveSlot2/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "E 1   ♥  1"
+
+[node name="SaveSlot3" type="PanelContainer" parent="TabContainer/DreamDiary/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/DreamDiary/VBoxContainer/SaveSlot3"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 11
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/DreamDiary/VBoxContainer/SaveSlot3/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Page3Button" type="Button" parent="TabContainer/DreamDiary/VBoxContainer/SaveSlot3/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+focus_neighbor_top = NodePath("../../../../SaveSlot2/MarginContainer/VBoxContainer/Page2Button")
+theme_override_font_sizes/font_size = 23
+action_mode = 0
+button_mask = 0
+text = "Page 3"
+alignment = 0
+
+[node name="Forsen3" type="Label" parent="TabContainer/DreamDiary/VBoxContainer/SaveSlot3/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Forsen"
+
+[node name="EffectHealth3" type="Label" parent="TabContainer/DreamDiary/VBoxContainer/SaveSlot3/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "E 1   ♥  1"
+
+[node name="SaveSlotImages" type="Control" parent="TabContainer/DreamDiary"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SaveSlotImage1" type="PanelContainer" parent="TabContainer/DreamDiary/SaveSlotImages"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 192.0
+offset_top = 96.0
+offset_right = 288.0
+offset_bottom = 192.0
+theme = ExtResource("1_fl3kk")
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/DreamDiary/SaveSlotImages/SaveSlotImage1"]
+layout_mode = 2
+texture = ExtResource("5_2qo01")
+expand_mode = 4
+
+[node name="SaveSlotImage2" type="PanelContainer" parent="TabContainer/DreamDiary/SaveSlotImages"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 192.0
+offset_top = 224.0
+offset_right = 288.0
+offset_bottom = 320.0
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/DreamDiary/SaveSlotImages/SaveSlotImage2"]
+layout_mode = 2
+texture = ExtResource("5_2qo01")
+expand_mode = 4
+
+[node name="SaveSlotImage3" type="PanelContainer" parent="TabContainer/DreamDiary/SaveSlotImages"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 192.0
+offset_top = 352.0
+offset_right = 288.0
+offset_bottom = 448.0
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/DreamDiary/SaveSlotImages/SaveSlotImage3"]
+layout_mode = 2
+texture = ExtResource("5_2qo01")
+expand_mode = 4
+
+[node name="Panel2" type="Panel" parent="TabContainer/DreamDiary"]
+layout_mode = 2
+offset_right = 640.0
+offset_bottom = 64.0
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TabContainer/DreamDiary/Panel2"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 19.0
+offset_right = 169.0
+offset_bottom = 43.0
+text = "Read Diary"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_us8xr")
+}
+autoplay = "start"
+
+[node name="MenuTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ayof1")
+volume_db = -10.0
+autoplay = true
+
+[node name="CursorSound" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("7_5qfc8")
+volume_db = -10.0
+
+[node name="OKSound" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("8_fpksq")
+volume_db = -10.0
+
+[node name="CancelSound" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("8_q14xo")
+volume_db = -10.0
+
+[node name="NoButtonSoundTimer" type="Timer" parent="."]
+wait_time = 0.61
+one_shot = true
+autostart = true
+
+[connection signal="focus_entered" from="TabContainer/TitleScreen/PanelContainer/MarginContainer/VBoxContainer/NewGameButton" to="." method="_on_button_focus_entered"]
+[connection signal="pressed" from="TabContainer/TitleScreen/PanelContainer/MarginContainer/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="focus_entered" from="TabContainer/TitleScreen/PanelContainer/MarginContainer/VBoxContainer/DreamDiaryButton" to="." method="_on_button_focus_entered"]
+[connection signal="pressed" from="TabContainer/TitleScreen/PanelContainer/MarginContainer/VBoxContainer/DreamDiaryButton" to="." method="_on_dream_diary_button_pressed"]
+[connection signal="focus_entered" from="TabContainer/TitleScreen/PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_button_focus_entered"]
+[connection signal="pressed" from="TabContainer/TitleScreen/PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="focus_entered" from="TabContainer/DreamDiary/VBoxContainer/SaveSlot1/MarginContainer/VBoxContainer/Page1Button" to="." method="_on_button_focus_entered"]
+[connection signal="pressed" from="TabContainer/DreamDiary/VBoxContainer/SaveSlot1/MarginContainer/VBoxContainer/Page1Button" to="." method="_on_page_1_button_pressed"]
+[connection signal="focus_entered" from="TabContainer/DreamDiary/VBoxContainer/SaveSlot2/MarginContainer/VBoxContainer/Page2Button" to="." method="_on_button_focus_entered"]
+[connection signal="pressed" from="TabContainer/DreamDiary/VBoxContainer/SaveSlot2/MarginContainer/VBoxContainer/Page2Button" to="." method="_on_page_2_button_pressed"]
+[connection signal="focus_entered" from="TabContainer/DreamDiary/VBoxContainer/SaveSlot3/MarginContainer/VBoxContainer/Page3Button" to="." method="_on_button_focus_entered"]
+[connection signal="pressed" from="TabContainer/DreamDiary/VBoxContainer/SaveSlot3/MarginContainer/VBoxContainer/Page3Button" to="." method="_on_page_3_button_pressed"]

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhsb6eg3l7khg"]
+
+[ext_resource type="Script" uid="uid://cj28h3uggsdyk" path="res://Scripts/Classes/GameObject.gd" id="1_ohg44"]
+[ext_resource type="Texture2D" uid="uid://csixtetwn2226" path="res://Assets/Sprites/Tiles/GachiRed.png" id="2_gepf3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qa4f1"]
+size = Vector2(32, 32)
+
+[node name="TileGachiRed" type="Node2D"]
+script = ExtResource("1_ohg44")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_qa4f1")
+
+[node name="GachiRed" type="Sprite2D" parent="."]
+texture = ExtResource("2_gepf3")

@@ -1,0 +1,169 @@
+[gd_scene load_steps=16 format=3 uid="uid://dg40yxgs7tc7q"]
+
+[ext_resource type="Script" uid="uid://tn037rf2vvq8" path="res://Scripts/Worlds/Lidl Worlds/TutorialFirst.gd" id="1_yy5hr"]
+[ext_resource type="Texture2D" uid="uid://b6rpev61qllpk" path="res://Assets/Sprites/Tutorial.png" id="2_131pj"]
+[ext_resource type="Shader" uid="uid://6yoigvasam2f" path="res://Scripts/Shaders/transition_squares.gdshader" id="3_64fq0"]
+[ext_resource type="Texture2D" uid="uid://b11svwyf68gsp" path="res://Assets/Sprites/tutorial_first.png" id="3_h3jy8"]
+[ext_resource type="AudioStream" uid="uid://b4t5w2exo3sxs" path="res://Assets/Audio/tutorial.WAV" id="4_e4ueh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jmsgk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bqnfm"]
+atlas = ExtResource("2_131pj")
+region = Rect2(0, 0, 320, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pav2"]
+atlas = ExtResource("3_h3jy8")
+region = Rect2(0, 0, 320, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o544e"]
+atlas = ExtResource("3_h3jy8")
+region = Rect2(320, 0, 320, 240)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bkf3k"]
+shader = ExtResource("3_64fq0")
+shader_parameter/progress = 1.0
+shader_parameter/square_size = 8
+shader_parameter/random_influence = 4.0
+shader_parameter/invert = false
+
+[sub_resource type="Gradient" id="Gradient_2egpg"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_koiqt"]
+gradient = SubResource("Gradient_2egpg")
+
+[sub_resource type="Animation" id="Animation_snklr"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:invert")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:progress")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.0, 1.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_req86"]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:invert")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a465q"]
+_data = {
+&"fade_in": SubResource("Animation_snklr"),
+&"fade_out": SubResource("Animation_req86")
+}
+
+[node name="Tutorial" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yy5hr")
+invert = true
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_jmsgk")
+current_tab = 0
+tabs_visible = false
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_bqnfm")
+metadata/_tab_index = 0
+
+[node name="TextureRect2" type="TextureRect" parent="TabContainer"]
+visible = false
+layout_mode = 2
+texture = SubResource("AtlasTexture_0pav2")
+metadata/_tab_index = 1
+
+[node name="TextureRect3" type="TextureRect" parent="TabContainer"]
+visible = false
+layout_mode = 2
+texture = SubResource("AtlasTexture_o544e")
+metadata/_tab_index = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_bkf3k")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_koiqt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_a465q")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_e4ueh")
+volume_db = -10.0
+pitch_scale = 0.9

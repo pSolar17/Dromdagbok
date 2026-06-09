@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwsph7a5ecbo1"]
+
+[ext_resource type="Script" uid="uid://ccxwa5grlkhnl" path="res://Scripts/Effects/effect_pointless.gd" id="1_sulb1"]
+[ext_resource type="Shader" uid="uid://cb3jrdvjuoova" path="res://Scripts/Shaders/grayscale_screen.gdshader" id="2_83y8x"]
+[ext_resource type="Texture2D" uid="uid://bwaejdxls6ogn" path="res://Assets/Sprites/Effects/Pointless.webp" id="3_msdcx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bvyjw"]
+shader = ExtResource("2_83y8x")
+
+[node name="Pointless" type="Node2D"]
+script = ExtResource("1_sulb1")
+id = "effect_pointless"
+effect_name = "Pointless"
+effect_desc = "There's no point in trying anymore..."
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 11
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_bvyjw")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pointless" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_msdcx")

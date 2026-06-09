@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhxagwuy4m05p"]
+
+[ext_resource type="Script" uid="uid://4qteyxqrjq7" path="res://Scripts/Objects/Hitmarker.gd" id="1_cdc3g"]
+[ext_resource type="Texture2D" uid="uid://b2cqty7d6qhl3" path="res://Assets/Sprites/hitmarker.png" id="2_4fisc"]
+[ext_resource type="AudioStream" uid="uid://cdtrwlmq8osx4" path="res://Assets/Audio/Effects/hitmarker.mp3" id="3_ucu1m"]
+
+[node name="Hitmarker" type="Node2D"]
+z_index = 2
+script = ExtResource("1_cdc3g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.031, 0.031)
+texture = ExtResource("2_4fisc")
+
+[node name="HitmarkerSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ucu1m")

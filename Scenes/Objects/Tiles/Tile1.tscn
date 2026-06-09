@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://dqdjx3o8cdbqs"]
+
+[ext_resource type="Script" uid="uid://dmlb34ov5twl" path="res://Scripts/Objects/SoundTile.gd" id="1_ncao2"]
+[ext_resource type="Texture2D" uid="uid://d0x3qe06bcey" path="res://Assets/Sprites/ShieldFolk World/tile1.png" id="2_wjq4d"]
+[ext_resource type="AudioStream" uid="uid://wo0krnr6ijma" path="res://Assets/Audio/ShieldFolk World/tile1.wav" id="3_6oete"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acbvu"]
+atlas = ExtResource("2_wjq4d")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfoj2"]
+atlas = ExtResource("2_wjq4d")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2l5q8"]
+atlas = ExtResource("2_wjq4d")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34vbs"]
+atlas = ExtResource("2_wjq4d")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j7gjh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_acbvu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfoj2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2l5q8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_34vbs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3bnwx"]
+size = Vector2(16, 16)
+
+[node name="Tile1" type="Node2D"]
+z_index = -1
+script = ExtResource("1_ncao2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_j7gjh")
+autoplay = "default"
+frame_progress = 0.602679
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_3bnwx")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_6oete")
+volume_db = -10.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

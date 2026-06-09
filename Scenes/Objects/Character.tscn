@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://m76eqllwbtj0"]
+
+[ext_resource type="Script" uid="uid://bcr8kg4mspvds" path="res://Scripts/Character.gd" id="1_og85u"]
+[ext_resource type="AudioStream" uid="uid://oytjalg13yk" path="res://Assets/Audio/footsteps.WAV" id="2_m40fm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q1mid"]
+size = Vector2(24, 24)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b8gix"]
+radius = 8.0
+
+[node name="Character" type="CharacterBody2D"]
+y_sort_enabled = true
+collision_mask = 54
+motion_mode = 1
+script = ExtResource("1_og85u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_q1mid")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
+position_smoothing_speed = 20.0
+
+[node name="RayCast2D" type="ShapeCast2D" parent="."]
+shape = SubResource("CircleShape2D_b8gix")
+target_position = Vector2(0, 32)
+collision_mask = 14
+
+[node name="FootstepSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_m40fm")
+volume_db = -15.0

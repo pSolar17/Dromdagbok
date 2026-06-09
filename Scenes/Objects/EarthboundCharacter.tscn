@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cwc538o86qusw"]
+
+[ext_resource type="Script" uid="uid://bcr8kg4mspvds" path="res://Scripts/Character.gd" id="1_kap5s"]
+[ext_resource type="PackedScene" uid="uid://du2bwdrd1p2ex" path="res://Scenes/Effects/Secrets/Ness.tscn" id="2_vec86"]
+[ext_resource type="AudioStream" uid="uid://oytjalg13yk" path="res://Assets/Audio/footsteps.WAV" id="3_mphox"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dc21x"]
+size = Vector2(12, 8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o6hog"]
+radius = 8.0
+
+[node name="EarthboundCharacter" type="CharacterBody2D" node_paths=PackedStringArray("active_effect")]
+collision_mask = 54
+motion_mode = 1
+script = ExtResource("1_kap5s")
+active_effect = NodePath("NessEffect")
+
+[node name="NessEffect" parent="." instance=ExtResource("2_vec86")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dc21x")
+
+[node name="RayCast2D" type="ShapeCast2D" parent="."]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_o6hog")
+target_position = Vector2(0, 32)
+collision_mask = 14
+
+[node name="FootstepSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_mphox")
+volume_db = -15.0

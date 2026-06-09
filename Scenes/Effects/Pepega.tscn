@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccnf5lvhg1y3k"]
+
+[ext_resource type="Script" uid="uid://gv2irjksxvmb" path="res://Scripts/Effects/effect_pepega.gd" id="1_07p8f"]
+[ext_resource type="Texture2D" uid="uid://dg1p31nyt2fh5" path="res://Assets/Sprites/Effects/Pepega.png" id="2_8dqm1"]
+
+[node name="effect_pepega" type="Node2D"]
+script = ExtResource("1_07p8f")
+id = "effect_pepega"
+effect_name = "Pepega"
+effect_desc = "Speeds all music up."
+
+[node name="Pepega" type="Sprite2D" parent="."]
+scale = Vector2(0.33, 0.25)
+texture = ExtResource("2_8dqm1")

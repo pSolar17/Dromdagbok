@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=4 uid="uid://sakfst8mrff5"]
+
+[ext_resource type="Script" uid="uid://bko6okbv763m3" path="res://Scripts/Classes/Level.gd" id="1_foom2"]
+[ext_resource type="Texture2D" uid="uid://vsf54phyup44" path="res://Assets/Sprites/Lidl Worlds/start.png" id="2_772il"]
+[ext_resource type="PackedScene" uid="uid://m76eqllwbtj0" path="res://Scenes/Objects/Character.tscn" id="3_401ad"]
+[ext_resource type="Script" uid="uid://dqd6tuhax8x4k" path="res://Scripts/Worlds/Lidl Worlds/SoundAdjuster.gd" id="4_l8hsv"]
+[ext_resource type="PackedScene" uid="uid://3dxca4iqedhd" path="res://Scenes/Objects/Other/SleeperObject.tscn" id="5_f334r"]
+[ext_resource type="TileSet" uid="uid://cggdnyn7esbos" path="res://Assets/Resources/TileSets/Tiles8.tres" id="5_j4q1l"]
+[ext_resource type="Texture2D" uid="uid://dt0cvnr3ab4vj" path="res://Assets/Sprites/Lidl Worlds/beg_gray.png" id="6_e8vdl"]
+[ext_resource type="PackedScene" uid="uid://bie14sm4ow82h" path="res://Scenes/Objects/Common/LevelEntry.tscn" id="7_jjvse"]
+[ext_resource type="PackedScene" uid="uid://bscem142f3tg8" path="res://Scenes/Objects/Other/SaveMenuOpener.tscn" id="9_uo0vu"]
+[ext_resource type="PackedScene" uid="uid://oygd341tbiae" path="res://Scenes/Objects/Other/DoorEnd.tscn" id="10_xku7k"]
+
+[node name="WorldStart" type="Node2D" node_paths=PackedStringArray("player")]
+y_sort_enabled = true
+script = ExtResource("1_foom2")
+world_size = Vector2(6400, 6400)
+player = NodePath("Character")
+dream_world = false
+limit_left = 0
+limit_top = 0
+limit_right = 640
+limit_bottom = 480
+
+[node name="SleeperObject" parent="." instance=ExtResource("5_f334r")]
+z_index = 1
+position = Vector2(472, 240)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -110
+offset_left = -1000.0
+offset_top = -1000.0
+offset_right = 1000.0
+offset_bottom = 1000.0
+color = Color(0, 0, 0, 1)
+
+[node name="Start" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(320, 240)
+texture = ExtResource("2_772il")
+
+[node name="Character" parent="." instance=ExtResource("3_401ad")]
+position = Vector2(320, 288)
+
+[node name="SoundAdjuster" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("4_l8hsv")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+visible = false
+tile_map_data = PackedByteArray("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")
+tile_set = ExtResource("5_j4q1l")
+collision_visibility_mode = 1
+
+[node name="BegGray" type="Sprite2D" parent="."]
+position = Vector2(454, 278)
+texture = ExtResource("6_e8vdl")
+offset = Vector2(0, -25)
+
+[node name="LevelEntryWakeUp" parent="." instance=ExtResource("7_jjvse")]
+position = Vector2(456, 232)
+id = 1
+
+[node name="SaveMenuOpener" parent="." instance=ExtResource("9_uo0vu")]
+position = Vector2(400, 201)
+
+[node name="DoorEnd" parent="." instance=ExtResource("10_xku7k")]
+position = Vector2(241, 178)
+level_id = "world_inmemory"
+level_entry = null
+enabled = null

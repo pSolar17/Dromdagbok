@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://or5j2ilpunb2"]
+
+[ext_resource type="Script" uid="uid://c2dnpv00iyj81" path="res://Scripts/Worlds/Minecraft World/MinecraftTeleporter.gd" id="1_8eepk"]
+[ext_resource type="Texture2D" uid="uid://bjx2r30w6x4vh" path="res://Assets/Sprites/Minecraft World/Loading.webp" id="1_31sy0"]
+[ext_resource type="Texture2D" uid="uid://b7djbckqw6dd8" path="res://Assets/Sprites/Minecraft World/DirtBackground.png" id="1_lcwpk"]
+[ext_resource type="AudioStream" uid="uid://cb5w14gm22d2q" path="res://Assets/Audio/Minecraft World/portal.wav" id="4_n5n3d"]
+
+[node name="MinecraftTeleporter" type="Area2D"]
+process_mode = 3
+collision_layer = 16
+script = ExtResource("1_8eepk")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="DirtBackground" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(384, 147)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_lcwpk")
+
+[node name="DirtBackground3" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(384, 580)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_lcwpk")
+
+[node name="DirtBackground4" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(-192, 582)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_lcwpk")
+
+[node name="DirtBackground2" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(-192, 147)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_lcwpk")
+
+[node name="Loading" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(0, 60)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_31sy0")
+centered = false
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+
+[node name="TeleportSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_n5n3d")
+
+[connection signal="body_entered" from="." to="." method="_on_player_entered"]
